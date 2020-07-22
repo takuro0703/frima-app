@@ -25,31 +25,31 @@ Things you may want to cover:
 
 
 
-## userテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|mail-address|string|null: false, unique:true|
+|mail_address|string|null: false, unique:true|
 |password|string|null: false|
 
 ### Association
-- belongs_to :credit-card
-- belongs_to :user_address
-- belongs_to :user_confirmation
-- has_many :item
+- has_one :credit_card
+- has_one :address
+- has_one :confirmation
+- has_many :items
 
 
 
 
-## credit-cardテーブル
+## credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|credit-number|integer|null: false|
+|credit_number|integer|null: false|
 |year|integer|null: false|
 |month|integer|null: false|
-|cvc-number|integer|null: false|
+|cvc_number|integer|null: false|
 |name|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -59,14 +59,14 @@ Things you may want to cover:
 
 
 
-## user-confirmationテーブル
+## confirmationsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|family-name|string|null: false|
+|family_name|string|null: false|
 |name|string|null: false|
-|frigana-first-name|string|null: false|
-|frigana-name|string|null: false|
+|frigana_first-name|string|null: false|
+|frigana_name|string|null: false|
 |year|integer|null: false|
 |month|integer|null: false|
 |day|integer|null: false|
@@ -78,17 +78,17 @@ Things you may want to cover:
 
 
 
-## user-addressテーブル
+## addressesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|postal-code|integer|null: false|
+|postal_code|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
-|house-number|string|null: false|
-|building-name|string|null: false|
-|room-number|int|
-|phone-number|string|
+|house_number|string|null: false|
+|building_name|string|null: false|
+|room_number|int|
+|phone_number|string|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -97,18 +97,29 @@ Things you may want to cover:
 
 
 
-## itemテーブル
+## itemsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|item_name|string|null: false|
+|item_description|string|null: false|
+|brand_description|string|
+|delivery_fee|integer|null: false|
+|religion|string|null: false|
+|delivery_span|integer|null: false|
+|item_price|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- has_many :images
+
+
+
+
+## imagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item-name|string|null: false|
-|item-description|string|null: false|
-|brand-description|string|
-|delivery-fee|integer|null: false|
-|religion|string|null: false|
-|delivery-span|integer|null: false|
-|item-price|integer|null: false|
-
-### Association
-- belongs_to :user
+|item_id|integer|null: false, foreign_key: true|
