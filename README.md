@@ -27,7 +27,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|nickname|string|null: false|
 |mail-address|string|null: false, unique:true|
 |password|string|null: false|
 
@@ -102,6 +102,7 @@ Things you may want to cover:
 |image|string|null: false|
 |item-name|string|null: false|
 |item-description|string|null: false|
+|category|string|null: false|
 |brand-description|string|
 |delivery-fee|integer|null: false|
 |religion|string|null: false|
