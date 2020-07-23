@@ -1,28 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 
 
 ## usersテーブル
@@ -113,6 +88,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - has_many :images
+- has_many :categories
 
 
 
@@ -123,3 +99,21 @@ Things you may want to cover:
 |------|----|-------|
 |image|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+
+
+
+
+
+## categoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|ancestry|string|null: false|
+|name|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
