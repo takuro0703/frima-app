@@ -105,7 +105,7 @@ Things you may want to cover:
 |item_description|string|null: false|
 |brand_description|string|
 |delivery_fee|integer|null: false|
-|religion|string|null: false|
+|region|string|null: false|
 |delivery_span|integer|null: false|
 |item_price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
