@@ -79,9 +79,10 @@
 |item_name|string|null: false|
 |item_description|string|null: false|
 |brand_description|string|
-|delivery_fee|integer|null: false|
+|item_condition|string|null: false|
+|delivery_fee|string|null: false|
 |region|string|null: false|
-|delivery_span|integer|null: false|
+|delivery_span|string|null: false|
 |item_price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -98,7 +99,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|integer|null: false, foreign_key: true|
+|item_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :item
