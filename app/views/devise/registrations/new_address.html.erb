@@ -1,0 +1,43 @@
+<h2>住所登録情報</h2>
+<%= form_for(@address, url: address_path) do |f|%>
+
+<div class="field">
+ <%= f.label :postal_code %><br />
+ <%= f.text_field :postal_code%>
+ </div>
+
+ <div class="field">
+ <%= f.label :prefectures %><br />
+ <%= f.text_field :prefectures %>
+ </div>
+
+  <div class="field">
+ <%= f.label :city %><br />
+ <%= f.text_field :city %>
+ </div>
+
+  <div class="field">
+ <%= f.label :house_number %><br />
+ <%= f.text_field :house_number %>
+ </div>
+
+  <div class="field">
+ <%= f.label :building_name %><br />
+ <%= f.text_field :building_name%>
+ </div>
+
+  <div class="field">
+ <%= f.label :room_number %><br />
+ <%= f.text_field :room_number %>
+ </div>
+
+  <div class="field">
+ <%= f.label :phone_number %><br />
+ <%= f.text_field :phone_number %>
+ </div>
+
+ <div class="actions">
+  <%= f.submit "Next" %>
+  </div>
+  <% end %>
+
