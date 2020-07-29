@@ -1,26 +1,25 @@
-<h2>Log in</h2>
-
-<%= form_for(@user, url: user_session_path) do |f| %>
-<%= render "devise/shared/error_messages", resource: @user %>
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname %>
-  </div>
+.wrapper
+  %h2 Log in
+  .form
+    = form_for(@user, url: user_session_path) do |f|
+      = render "devise/shared/error_messages", resource: @user
+      .field
+        = f.label :nickname
+        %br
+        = f.text_field :nickname
   
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      .field
+        = f.label :email
+        %br
+        = f.email_field :email, autofocus: true, autocomplete: "email"
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      .field
+        = f.label :password
+        %br
+        = f.password_field :password, autocomplete: "current-password"
 
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+      .actions
+        = f.submit "Log in"
 
-<%= render "devise/shared/links" %>
+= render "devise/shared/links"
