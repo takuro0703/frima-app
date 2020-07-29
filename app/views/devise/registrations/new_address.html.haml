@@ -1,43 +1,51 @@
 .wrapper
-  %h2 住所登録情報
-  .form
-    = form_for(@address, url: address_path) do |f|
+  .content
+    %h2.title 住所登録情報
+    .form
+      = form_for(@address, url: address_path) do |f|
 
-      .field
-        = f.label :postal_code
-        %br
-        = f.text_field :postal_code
+        .field
+          = f.label :postal_code, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :postal_code, placeholder: "郵便番号"
 
-      .field
-        = f.label :prefectures
-        %br
-        = f.text_field :prefectures
+        .field
+          = f.label :prefectures, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :prefectures, placeholder: "都道府県"
 
-      .field
-        = f.label :city
-        %br
-        = f.text_field :city
+        .field
+          = f.label :city, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :city, placeholder: "市町村"
 
-      .field
-        = f.label :house_number
-        %br
-        = f.text_field :house_number
+        .field
+          = f.label :house_number, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :house_number, placeholder: "番地"
 
-      .field
-        = f.label :building_name
-        %br
-        = f.text_field :building_name
+        .field
+          = f.label :building_name, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :building_name, placeholder: "建物名"
 
-      .field
-        = f.label :room_number
-        %br
-        = f.text_field :room_number
+        .field
+          = f.label :room_number, class: "label"
+          %span.essential 任意
+          %br
+          = f.text_field :room_number, placeholder: "部屋番号"
 
-      .field
-        = f.label :phone_number
-        %br
-        = f.text_field :phone_number
+        .field
+          = f.label :phone_number, class: "label"
+          %span.essential 任意
+          %br
+          = f.text_field :phone_number, placeholder: "電話番後"
 
-      .actions
-        = f.submit "Next"
+        .actions
+          = f.submit "次へ進む", class:"submit"
 
