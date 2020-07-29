@@ -10,6 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
  def create
   @user = User.new(sign_up_params)
+  
   unless @user.valid?
     flash.now[:alert] = @user.errors.full_messages
     render :new and return 
@@ -38,12 +39,14 @@ def create_confirmation
 
  @user =  User.new(session["devise.regist_data"]["user"])
   @confirmation = Confirmation.new(confirmation_params)
-  if @confirmation.valid?
+  unless @confirmation.valid?
     flash.now[:alert] = @confirmation.errors.full_messages
     render :new_confirmation and return 
   end
+   
    @user.build_confirmation(@confirmation.attributes)
    @user.build_address(session["address_data"]["address"])
+   binding.pry
    @user.save
    session["devise.regist_data"]["user"].clear
    sign_in(:user, @user)

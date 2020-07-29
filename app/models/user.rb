@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   has_one :address
   has_one :confirmation
+  has_secure_password
 end
