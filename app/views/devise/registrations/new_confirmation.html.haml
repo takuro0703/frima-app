@@ -1,0 +1,51 @@
+.wrapper
+  %h2個人情報登録
+  
+  .form
+    = form_for(@confirmation, url: confirmation_path) do |f|
+      = render "devise/shared/error_messages", resource: @confirmation
+
+      .field
+        = f.label :family_name
+        %br
+        = f.text_field :family_name
+  
+
+      .field
+        = f.label :last_name
+        %br
+        = f.text_field :last_name
+  
+
+      .field
+        = f.label :frigana_first_name
+        %br
+        = f.text_field :frigana_first_name
+  
+
+      .field
+        = f.label :frigana_last_name
+        %br
+        = f.text_field :frigana_last_name
+ 
+
+      .field
+        = f.label :year
+        %br
+        = f.text_field :year
+ 
+
+      .field
+        = f.label :month
+        %br
+        = f.text_field :month
+ 
+
+      .field
+        = f.label :day
+        %br
+        = f.text_field :day
+
+      .action
+        = f.submit "Sign up"
+  
