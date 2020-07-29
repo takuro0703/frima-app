@@ -16,7 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end

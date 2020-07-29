@@ -50,17 +50,16 @@ def create_confirmation
    @user.save
    session["devise.regist_data"]["user"].clear
    sign_in(:user, @user)
-   
-   redirect_to  root_path
   end
 
   private
+
 def address_params
   params.require(:address).permit(:postal_code,  :prefectures, :city, :house_number, :building_name,:room_number, :phone_number)
 end
 
 def confirmation_params
-  params.require(:confirmation).permit(:family_name, :last_name, :frigana_first_name, :frigana_last_name, :year, :month, :day)
+  params.require(:confirmation).permit(:family_name, :last_name, :frigana_family_name, :frigana_last_name, :year, :month, :day)
 end
   # GET /resource/sign_up
   # def new
