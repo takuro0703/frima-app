@@ -38,14 +38,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null: false|
-|name|string|null: false|
-|frigana_first-name|string|null: false|
-|frigana_name|string|null: false|
-|year|integer|null: false|
-|month|integer|null: false|
-|day|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
+@user.build_confirmation
 
 ### Association
 - belongs_to :user

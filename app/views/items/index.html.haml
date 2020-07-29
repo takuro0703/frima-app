@@ -15,9 +15,12 @@
         %li= link_to 'カテゴリー',"#", class:"category"
         %li= link_to 'ブランド', "#",class:"brand"
       %ul.nav--right
-        %li= link_to 'ログイン',"#", class:"login"
-        %li= link_to '新規会員登録',"#", class:"new"
-  
+        - if user_signed_in?
+          %li= link_to 'ログアウト',destroy_user_session_path, class:"login", method: :delete
+        - else
+          %li= link_to 'ログイン',new_user_session_path, class:"login"
+          %li= link_to '新規会員登録',new_user_registration_path, class:"new"
+
 
 .main
   .main__visual
