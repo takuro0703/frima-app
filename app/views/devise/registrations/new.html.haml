@@ -1,35 +1,37 @@
 .wrapper
-  %h2 Sign up
+  .content
+    %h2.title Sign up
 
-  .form
-    = form_for(@user, url: user_registration_path) do |f|
-      = render "devise/shared/error_messages", resource: @user
+    .form
+      = form_for(@user, url: user_registration_path) do |f|
+        = render "devise/shared/error_messages", resource: @user
     
-      .field
-        = f.label :nickname
-        %br 
-        = f.text_field :nickname
+        .field
+          = f.label :nickname, class: "label"
+          %span.essential 必須
+          %br 
+          = f.text_field :nickname, placeholder: "例)フリマ太郎"
 
-      .field
-        = f.label :email
-        %br 
-        = f.email_field :email, autofocus: true, autocomplete: "email" 
+        .field
+          = f.label :email, class: "label"
+          %span.essential 必須
+          %br 
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらも可"
   
-      .field
-        = f.label :password
-        - if @minimum_password_length
-          %em= @minimum_password_length
-          characters minimum
-        %br  
-        = f.password_field :password, autocomplete: "new-password"
+        .field
+          = f.label :password, class: "label"
+          %span.essential 必須
+          %br  
+          = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上の半角英数字"
 
-      .field
-        = f.label :password_confirmation
-        %br 
-        = f.password_field :password_confirmation, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation, class: "label"
+          %span.essential 必須
+          %br 
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード再入力"
 
-      .actions
-        = f.submit "Next"
+        .actions
+          = f.submit "次へ進む", class:"submit"
 
-      = render "devise/shared/links"
+      -# = render "devise/shared/links"
   

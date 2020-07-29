@@ -1,51 +1,59 @@
 .wrapper
-  %h2個人情報登録
+  .content
+    %h2.title 個人情報登録
   
-  .form
-    = form_for(@confirmation, url: confirmation_path) do |f|
-      = render "devise/shared/error_messages", resource: @confirmation
+    .form
+      = form_for(@confirmation, url: confirmation_path) do |f|
+        = render "devise/shared/error_messages", resource: @confirmation
 
-      .field
-        = f.label :family_name
-        %br
-        = f.text_field :family_name
-  
-
-      .field
-        = f.label :last_name
-        %br
-        = f.text_field :last_name
+        .field
+          = f.label :family_name, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :family_name, placeholder: "苗字（漢字）"
   
 
-      .field
-        = f.label :frigana_first_name
-        %br
-        = f.text_field :frigana_first_name
+        .field
+          = f.label :last_name, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :last_name, placeholder: "名前（漢字）"
   
 
-      .field
-        = f.label :frigana_last_name
-        %br
-        = f.text_field :frigana_last_name
+        .field
+          = f.label :frigana_first_name, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :frigana_first_name, placeholder: "ふりがな（苗字）"
+  
+
+        .field
+          = f.label :frigana_last_name, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :frigana_last_name, placeholder: "ふりがな（名前）"
  
 
-      .field
-        = f.label :year
-        %br
-        = f.text_field :year
+        .field
+          = f.label :year, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :year, placeholder: "生年月日"
  
 
-      .field
-        = f.label :month
-        %br
-        = f.text_field :month
+        .field
+          = f.label :month, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :month, placeholder: "生年月日"
  
 
-      .field
-        = f.label :day
-        %br
-        = f.text_field :day
+        .field
+          = f.label :day, class: "label"
+          %span.essential 必須
+          %br
+          = f.text_field :day, placeholder: "生年月日"
 
-      .action
-        = f.submit "Sign up"
+        .actions
+          = f.submit "登録", class:"submit"
   
