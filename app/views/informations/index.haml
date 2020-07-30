@@ -1,0 +1,33 @@
+.information_wrapper
+  .information_content
+    %h1.information_title 設定
+    .information_lists
+      .information_list
+        =link_to "#", class: "information_link" do
+          %p.link_title プロフィール
+          =icon("fa", "angle-right")
+
+      .information_list
+        =link_to "#", class: "information_link" do
+          %p.link_title 住所変更
+          =icon("fa", "angle-right")
+
+      .information_list
+        =link_to  "#", class: "information_link" do
+          %p.link_title 支払い方法
+          =icon("fa", "angle-right")
+
+      .information_list
+        =link_to "#", class: "information_link" do
+          %p.link_title 本人情報
+          =icon("fa", "angle-right")
+
+      .information_list
+        =link_to "#", class: "information_link" do
+          %p.link_title メール・パスワード
+          =icon("fa", "angle-right")
+
+      .information_list
+        =link_to destroy_user_session_path, class:"information_link", method: :delete do
+          %p.link_title ログアウト
+          =icon("fa", "angle-right")
