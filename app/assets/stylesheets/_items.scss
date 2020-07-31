@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  position: relative;
 }
 
 .Header{
@@ -444,5 +445,31 @@
     .footer__image{
       width: 100%;
     }
+  }
+}
+.sell_item_path{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #3CCACE;
+  border-radius: 5px;
+  span{
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .sell_image{
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin-left: 10px;
   }
 }
