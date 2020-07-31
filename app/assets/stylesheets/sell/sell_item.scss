@@ -1,0 +1,30 @@
+.seller_wrapper{
+  .seller_content{
+    .seller_form{
+      .seller_form_content{
+        .sell_list{
+          margin-left: 30px;
+          .sell_image_area{
+            width: 600px;
+          }
+          .sell_image_label{
+            position: relative;
+            display: block;
+            width: 600px;
+            height: 200px;
+            background-color: #eeeeee;
+            .fa-camera{
+              display: block;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+            }
+            .sell_image_content{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

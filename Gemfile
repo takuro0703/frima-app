@@ -70,3 +70,4 @@ end
 gem 'devise'
 gem 'ancestry'
 gem 'pry-rails'
+gem 'jquery-rails'

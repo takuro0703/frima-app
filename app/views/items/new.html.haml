@@ -1,0 +1,81 @@
+.seller_wrapper
+  .seller_content
+    .seller_form
+      = form_for(@item, url: items_path, html: { class: "seller_form_content"}) do |f|
+        .sell_list
+          = f.label :出品画像
+          %span 必須
+          %br
+          %p 最大10枚までアップロード
+          %br
+          
+          .sell_image_area
+
+          =f.fields_for :images, class: "sell_image_form" do |img|
+            %label{class: "sell_image_label"}
+              =icon("fa", "camera")
+              =img.file_field :image_content, multiple: true, class: "sell_image_content"
+        
+        .sell_list
+          =f.label :item_name, "商品名"
+          %span 必須
+          %br
+          = f.text_field :item_name, placeholder: "40文字まで"
+
+        .sell_list
+          =f.label :item_description, "商品の説明"
+          %span 必須
+          %br 
+          =f.text_area :item_description, placeholder: "商品の説明"
+          
+        -# .sell_list
+        -#   =f.label :item_description, "商品の説明"
+        -#   %span 必須
+        -#   %br
+        -#   = f.select :category, Category.all
+
+
+        .sell_list
+          =f.label :item_description, "商品の説明"
+          %span 必須
+          %br
+          =f.collection_select :status, Status.all, :id, :name
+        
+
+        .sell_list
+          =f.label :brand_description, "ブランド"
+          %span 任意
+          %br 
+          =f.text_field :brand_description, placeholder: "ブランド"
+
+        
+        .sell_list
+          =f.label :fee, "配送料の負担"
+          %span 必須
+          %br
+          =f.collection_select :fee, Fee.all, :id, :name
+
+
+        .sell_list
+          =f.label :region, "発送元の地域"
+          %span 必須
+          %br
+          =f.collection_select :prefecture, Prefecture.all, :id, :name
+
+
+        .sell_list
+          =f.label :span, "発送までの日数"
+          %span 必須
+          %br
+          =f.collection_select :span, Span.all, :id, :name
+
+
+        .sell_list
+          =f.label :item_price, "販売価格"
+          %span 必須
+          %br 
+          =f.text_field :item_price, placeholder: "(例 2000"
+        
+        
+        .sell_submit_area
+          =f.submit "出品する", class: "sell_submit"
