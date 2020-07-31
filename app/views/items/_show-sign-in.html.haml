@@ -1,0 +1,122 @@
+.brand-box
+  %ul.brand-box__lists
+    %li.brand-box__lists__list1
+      = link_to root_path, class: "brand-box__lists__list1--link1" do
+        FURIMA
+      >
+    %li.brand-box__lists__list2
+      ベビー・キッズ
+      -# = @item.category.parent.parent.name
+
+      >
+    %li.brand-box__lists__list3
+      ベビー服（男の子用）~95cm
+      -# = @item.category.parent.name
+
+      >
+    %li.brand-box__lists__list4
+      アウター
+      -# = @item.category.name
+
+      >
+    %li.brand-box__lists__list5
+      .brand-box__lists__list5--individual-product
+        = @item.item_name
+
+.backcolor-box
+  .details-in-box
+    .detail
+      .detail--item_name
+        = @item.item_name
+      %ul.detail--main-img
+        %li
+          -# = image_tag @product.images[0].name.url, class: "detail--main-img--image"
+          %ul
+            - @item.images.each do |image|
+              %li
+                = image_tag image.image, size: "140x140" , class: "show-img"
+      .detail--price
+        = @item.item_price
+        円
+      .detail--delivery_fee 
+        = @item.delivery_fee
+      .detail--item_description
+        = @item.item_description
+      .detail__table
+      
+        %table
+          %tbody
+            %tr
+              %th
+                出品者
+              %td
+                = @item.user.nickname
+            %tr
+              %th
+                カテゴリー
+              %td
+                %br
+                  ベビーキッズ
+                -# = @item.category.parent.parent.name
+                %br
+                  ベビー服（男の子用）~95cm
+                -# = @item.category.parent.name
+                %br
+                  アウター
+                -# = @item.category.name
+                  
+            %tr
+              %th
+                ブランド
+              %td
+                = @item.brand_description
+            %tr
+              %th
+                商品のサイズ
+              %td
+                
+            %tr
+              %th
+                商品の状態
+              %td
+                = @item.item_condition
+            %tr
+              %th
+                配送料の負担
+              %td
+                = @item.delivery_fee
+            %tr
+              %th
+                発送元の地域
+              %td
+                = @item.region
+            %tr
+              %th
+                発送日の目安
+              %td
+                = @item.delivery_span
+  .comment
+    .comment__container
+      %form.comment__container__message-form
+        %p.comment__container__message-form__attention
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.comment__container__message-form__text
+        %button.comment__container__message-form__comment-btn
+          %span
+            コメントする
+  .links
+    .links__around
+      = link_to "#", class: "links__around--ahead" do
+        < 前の商品
+      = link_to "#", class: "links__around--behind" do
+        後ろの商品 >
+    .links__category
+      = link_to "#", class: "links__category--related" do
+        ベビー・キッズをもっと見る
+    - if current_user.id == @item.user_id
+      = link_to "商品を編集する", "#", class: "edit-btn"
+      = link_to "商品を削除する", "#", class: "delete-btn"
+      -# 本来なら上にmethod: :deleteを作成する
+    - else
+      = link_to "#", class: "buy-btn" do
+        購入画面に進む

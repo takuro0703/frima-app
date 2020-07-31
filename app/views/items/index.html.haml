@@ -100,7 +100,7 @@
       .main__pickup__box__lists
         - @items.zip(@images) do |item,image|
           .main__pickup__box__lists__list
-            %a{ href: '#'} 
+            =link_to item_path(item.id) do
               .product--img
                 = image_tag url=image.image
               .product--body
@@ -123,7 +123,7 @@
       .main__pickup__box__lists
         - @items.zip(@images) do |item,image|
           .main__pickup__box__lists__list
-            %a{ href: '#'} 
+            =link_to item_path(item.id) do
               .product--img
                 = image_tag url=image.image
               .product--body
