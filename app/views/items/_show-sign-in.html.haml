@@ -6,17 +6,17 @@
       >
     %li.brand-box__lists__list2
       ベビー・キッズ
-      -# = @product.category.parent.parent.name
+      -# = @item.category.parent.parent.name
 
       >
     %li.brand-box__lists__list3
       ベビー服（男の子用）~95cm
-      -# = @product.category.parent.name
+      -# = @item.category.parent.name
 
       >
     %li.brand-box__lists__list4
       アウター
-      -# = @product.category.name
+      -# = @item.category.name
 
       >
     %li.brand-box__lists__list5
@@ -26,7 +26,7 @@
 .backcolor-box
   .details-in-box
     .detail
-      .detail--name
+      .detail--item_name
         = @item.item_name
       %ul.detail--main-img
         %li
@@ -38,10 +38,10 @@
       .detail--price
         = @item.item_price
         円
-      .detail--price-description 
+      .detail--delivery_fee 
         = @item.delivery_fee
-      .detail--item-name
-        = @item.item_name
+      .detail--item_description
+        = @item.item_description
       .detail__table
       
         %table
@@ -55,7 +55,8 @@
               %th
                 カテゴリー
               %td
-                ベビーキッズ
+                %br
+                  ベビーキッズ
                 -# = @item.category.parent.parent.name
                 %br
                   ベビー服（男の子用）~95cm
@@ -73,7 +74,7 @@
               %th
                 商品のサイズ
               %td
-                ”仮置き表示”
+                
             %tr
               %th
                 商品の状態

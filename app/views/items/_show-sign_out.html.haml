@@ -26,10 +26,11 @@
 .backcolor-box
   .details-in-box
     .detail
-      .detail--name
+      .detail--item_name
         = @item.item_name
       %ul.detail--main-img
         %li
+          -# = image_tag @product.images[0].name.url, class: "detail--main-img--image"
           %ul
             - @item.images.each do |image|
               %li
@@ -37,10 +38,10 @@
       .detail--price
         = @item.item_price
         円
-      .detail--price-description 
+      .detail--delivery_fee 
         = @item.delivery_fee
-      .detail--item-name
-        = @item.item_name
+      .detail--item_description
+        = @item.item_description
       .detail__table
       
         %table
@@ -54,7 +55,8 @@
               %th
                 カテゴリー
               %td
-                ベビーキッズ
+                %br
+                  ベビーキッズ
                 -# = @item.category.parent.parent.name
                 %br
                   ベビー服（男の子用）~95cm
@@ -72,7 +74,7 @@
               %th
                 商品のサイズ
               %td
-                ”仮置き表示”
+                
             %tr
               %th
                 商品の状態
