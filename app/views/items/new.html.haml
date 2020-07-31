@@ -12,9 +12,12 @@
           .sell_image_area
 
           =f.fields_for :images, class: "sell_image_form" do |img|
-            %label{class: "sell_image_label"}
+            %label{class: "sell_image_label", for:"test1"}
               =icon("fa", "camera")
-              =img.file_field :image_content, multiple: true, class: "sell_image_content"
+              =img.file_field :image_content, class: "sell_image_content", id:"test"
+              -# <input type="file" name="item[image_attributes][0]" id="test1">
+              -# <input type="file" name="item[image_attributes][1]">
+
         
         .sell_list
           =f.label :item_name, "商品名"
@@ -28,11 +31,11 @@
           %br 
           =f.text_area :item_description, placeholder: "商品の説明"
           
-        -# .sell_list
-        -#   =f.label :item_description, "商品の説明"
-        -#   %span 必須
-        -#   %br
-        -#   = f.select :category, Category.all
+        .sell_list
+          =f.label :item_description, "商品の説明"
+          %span 必須
+          %br
+          = f.collection_select :category_id, Category.all, :id, :name
 
 
         .sell_list

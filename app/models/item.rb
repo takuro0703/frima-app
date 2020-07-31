@@ -6,4 +6,5 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   has_many :images
   has_many :categories
+  accepts_nested_attributes_for :images
 end
