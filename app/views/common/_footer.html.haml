@@ -1,0 +1,31 @@
+.appBanner--bottom
+  .appBanner--bottom__content
+    %h2.appBanner--bottom__content__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.appBanner--bottom__content__text 今すぐ無料ダウンロード！
+    .appBanner--bottom__content__btn
+      = link_to image_tag(src= "icon/apple.svg", class: "a-btn")
+      = link_to image_tag(src= "icon/google.svg", class: "g-btn")
+
+.footer
+  %ul.contents
+    %li.contents--about 
+      %h2.contents--about__head FURIMAについて
+      %ul.contents--about__lists
+        %li= link_to '会社概要',"#", class:"contents--about__lists__list"
+        %li= link_to 'プライバシーポリシー',"#", class:"contents--about__lists__list" 
+        %li= link_to 'FURIMA利用規約',"#", class:"contents--about__lists__list"
+        %li= link_to 'ポイントに関する特約',"#", class:"contents--about__lists__list"
+    %li.contents--look 
+      %h2.contents--look__head FURIMAを見る
+      %ul.contents--look__lists
+        %li= link_to 'カテゴリー一覧',"#",class:"contents--look__lists__list"
+        %li= link_to 'ブランド一覧',"#", class:"contents--look__lists__list" 
+    %li.contents--help 
+      %h2.contents--help__head ヘルプ＆ガイド
+      %ul.contents--help__lists
+        %li= link_to 'FURIMAガイド',"#",class:"contents--help__lists__list" 
+        %li= link_to 'FURIMAロゴ利用ガイドライン',"#",class:"contents--help__lists__list" 
+        %li= link_to 'お知らせ',"#",class:"contents--help__lists__list" 
+  .footer__logo
+    = link_to image_tag(src= "logo/logo-white.png", class: "footer__image")
+  %p ©︎ FURIMA
