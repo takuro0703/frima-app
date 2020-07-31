@@ -115,7 +115,7 @@
         ベビー・キッズをもっと見る
     - if current_user.id == @item.user_id
       = link_to "商品を編集する", "#", class: "edit-btn"
-      = link_to "商品を削除する", "#", class: "delete-btn"
+      = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
       -# 本来なら上にmethod: :deleteを作成する
     - else
       = link_to "#", class: "buy-btn" do
