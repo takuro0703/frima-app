@@ -12,11 +12,19 @@
           .sell_image_area
 
           =f.fields_for :images, class: "sell_image_form" do |img|
-            %label{class: "sell_image_label", for:"test1"}
+            %label{class: "sell_image_label", for:"1"}
               =icon("fa", "camera")
-              =img.file_field :image_content, class: "sell_image_content", id:"test"
-              -# <input type="file" name="item[image_attributes][0]" id="test1">
-              -# <input type="file" name="item[image_attributes][1]">
+              =img.file_field :image_content, class: "sell_image_content", id: "1"
+              =img.file_field :image_content, class: "sell_image_content", id: "2"
+              =img.file_field :image_content, class: "sell_image_content", id: "3"
+              =img.file_field :image_content, class: "sell_image_content", id: "4"
+              =img.file_field :image_content, class: "sell_image_content", id: "5"
+              =img.file_field :image_content, class: "sell_image_content", id: "6"
+              =img.file_field :image_content, class: "sell_image_content", id: "7"
+              =img.file_field :image_content, class: "sell_image_content", id: "8"
+              =img.file_field :image_content, class: "sell_image_content", id: "9"
+              =img.file_field :image_content, class: "sell_image_content", id: "10"
+
 
         
         .sell_list
@@ -32,14 +40,14 @@
           =f.text_area :item_description, placeholder: "商品の説明"
           
         .sell_list
-          =f.label :item_description, "商品の説明"
+          =f.label :item_description, "商品のカテゴリー"
           %span 必須
           %br
-          = f.collection_select :category_id, Category.all, :id, :name
+          = f.collection_select :category_ids, Category.all, :id, :name
 
 
         .sell_list
-          =f.label :item_description, "商品の説明"
+          =f.label :item_description, "商品の状態"
           %span 必須
           %br
           =f.collection_select :status, Status.all, :id, :name

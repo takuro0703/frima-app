@@ -10,7 +10,13 @@ $(function(){
   var file_field = document.querySelector('input[type = file]')
   $('.sell_image_content').change(function(){
     var file = $('input[type=file]').prop('files')[0];
+    var node = $('.sell_image_label')
+    var id = Number(node.attr('for'))
+       node.removeAttr('for')
+       new_id = id + 1;
+       node[0].setAttribute('for', new_id);
     
+       
     var fileReader = new FileReader();
         fileReader.onloadend = function(){
           var src = fileReader.result
@@ -19,15 +25,6 @@ $(function(){
         }
         fileReader.readAsDataURL(file)
   })
-  $('.sell_submit').click(function(e){
-      
-     e.preventDefault();
-     let item_image = $('.sell_image_area').children('img');
+  
 
-  $.ajax({
-    type: 'POST',
-    url:  items_path,
-    data: {img: item_image, }
-  })
-})
 })
