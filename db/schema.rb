@@ -65,9 +65,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_074816) do
     t.string "region", null: false
     t.string "delivery_span", null: false
     t.integer "item_price", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
