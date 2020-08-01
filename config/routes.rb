@@ -10,4 +10,8 @@ Rails.application.routes.draw do
     post 'confirmation', to: 'users/registrations#create_confirmation'
   end
   root to: 'items#index'
+
+
+  resources :items
+
 end
