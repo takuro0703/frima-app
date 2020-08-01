@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :span
@@ -7,6 +8,8 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :categories
   accepts_nested_attributes_for :images
+
+ 
   belongs_to :user
 end
 
