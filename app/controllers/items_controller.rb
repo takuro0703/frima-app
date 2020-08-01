@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
+  before_action :set_item,only: [:show, :destroy]
+
   def index
     @items = Item.all
     @images = Image.all
+
   end
 
   def new
@@ -43,3 +46,4 @@ class ItemsController < ApplicationController
 
 end
 end
+

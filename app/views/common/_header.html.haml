@@ -1,0 +1,22 @@
+.Header
+  .Header__inner
+    .Header__inner__main
+      .Header__inner__main__icon
+        = link_to image_tag(src= "logo/logo.png", class: "top-image")
+      .searchBox
+        =form_with url:"#" do |form|
+          =form.text_field :content, placeholder:"キーワードから探す", class:"searchBox__input"
+          =form.label :btn do
+            =icon("fas", "search")
+            =form.submit class:"btn", id:"btn"
+            
+    .Header__inner__nav
+      %ul.nav--left
+        %li= link_to 'カテゴリー',"#", class:"category"
+        %li= link_to 'ブランド', "#",class:"brand"
+      %ul.nav--right
+        - if user_signed_in?
+          %li= link_to 'ログアウト',destroy_user_session_path, class:"login", method: :delete
+        - else
+          %li= link_to 'ログイン',new_user_session_path, class:"login"
+          %li= link_to '新規会員登録',new_user_registration_path, class:"new"
