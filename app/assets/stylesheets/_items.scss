@@ -1,9 +1,7 @@
 * {
   box-sizing: border-box;
-<<<<<<< Updated upstream
-=======
+
   overflow: scroll;
->>>>>>> Stashed changes
   position: relative;
 }
 
@@ -451,7 +449,6 @@
     }
   }
 }
-<<<<<<< Updated upstream
 .sell_item_path{
   position: fixed;
   bottom: 20px;
@@ -476,32 +473,6 @@
     width: 80%;
     height: 80%;
     margin-left: 10px;
-=======
-.seller{
-  bottom: 20px;
-  right: 20px;
-  position: fixed;
-  display: block;
-  padding: 10px;
-  width: 85px;
-  height: 90px;
-  background-color: #3CCACE;
-  text-decoration: none;
-  border-radius: 5px;
-  span{
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-    font-size: 14px;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-  }
-  .sell_btn{
-    display: block;
-    text-align: center;
-    width: 60%;
-    margin-left: 12px;
->>>>>>> Stashed changes
+
   }
 }

@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-<<<<<<< Updated upstream
     @item.images.new
   end
 
@@ -27,18 +26,3 @@ class ItemsController < ApplicationController
 
 end
 end
-=======
-    @image = Image.new
-  end
-
-  def create
-    
-    redirect_to root_path
-  end
-
-  private
-  def sell_item_params
-    params.require(:item).permit(:item_name, :item_description, :status, :brand_description, :fee, :prefecture, :span, :item_price)
-  end
- end
->>>>>>> Stashed changes

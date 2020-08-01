@@ -12,33 +12,26 @@
           .sell_image_area
 
           =f.fields_for :images, class: "sell_image_form" do |img|
-<<<<<<< Updated upstream
+
             %label{class: "sell_image_label", for:"1"}
               =icon("fa", "camera")
               =img.file_field :image, class: "sell_image_content", id: "1", required: true
 
 
-=======
-            %label{class: "sell_image_label"}
-              =icon("fa", "camera")
-              =img.file_field :image_content, multiple: true, class: "sell_image_content"
->>>>>>> Stashed changes
         
         .sell_list
           =f.label :item_name, "商品名"
           %span 必須
           %br
-<<<<<<< Updated upstream
+
           = f.text_field :item_name, placeholder: "40文字まで", required: true
-=======
-          = f.text_field :item_name, placeholder: "40文字まで"
->>>>>>> Stashed changes
+
 
         .sell_list
           =f.label :item_description, "商品の説明"
           %span 必須
           %br 
-<<<<<<< Updated upstream
+
           =f.text_area :item_description, placeholder: "商品の説明", required: true
           
         .sell_list
@@ -53,22 +46,7 @@
           %span 必須
           %br
           =f.collection_select :status_id, Status.all, :id, :name, required: true
-=======
-          =f.text_area :item_description, placeholder: "商品の説明"
-          
-        -# .sell_list
-        -#   =f.label :item_description, "商品の説明"
-        -#   %span 必須
-        -#   %br
-        -#   = f.select :category, Category.all
 
-
-        .sell_list
-          =f.label :item_description, "商品の説明"
-          %span 必須
-          %br
-          =f.collection_select :status, Status.all, :id, :name
->>>>>>> Stashed changes
         
 
         .sell_list
@@ -82,49 +60,32 @@
           =f.label :fee, "配送料の負担"
           %span 必須
           %br
-<<<<<<< Updated upstream
           =f.collection_select :fee_id, Fee.all, :id, :name, required: true
-=======
-          =f.collection_select :fee, Fee.all, :id, :name
->>>>>>> Stashed changes
+
 
 
         .sell_list
           =f.label :region, "発送元の地域"
           %span 必須
           %br
-<<<<<<< Updated upstream
           =f.collection_select :prefecture_id, Prefecture.all, :id, :name, required: true
-=======
-          =f.collection_select :prefecture, Prefecture.all, :id, :name
->>>>>>> Stashed changes
+
 
 
         .sell_list
           =f.label :span, "発送までの日数"
           %span 必須
           %br
-<<<<<<< Updated upstream
           =f.collection_select :span_id, Span.all, :id, :name, required: true
-=======
-          =f.collection_select :span, Span.all, :id, :name
->>>>>>> Stashed changes
+
 
 
         .sell_list
           =f.label :item_price, "販売価格"
           %span 必須
           %br 
-<<<<<<< Updated upstream
           =f.text_field :item_price, placeholder: "(例 2000", required: true
         
         
         .sell_submit_area
           =f.submit "出品する", class: "sell_submit"
-=======
-          =f.text_field :item_price, placeholder: "(例 2000"
-        
-        
-        .sell_submit_area
-          =f.submit "出品する", class: "sell_submit"
->>>>>>> Stashed changes

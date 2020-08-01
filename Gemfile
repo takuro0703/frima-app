@@ -70,13 +70,7 @@ end
 gem 'devise'
 gem 'ancestry'
 gem 'pry-rails'
-<<<<<<< Updated upstream
 gem 'jquery-rails'
-gem 'active_hash'
-gem 'carrierwave'
-=======
 gem 'active_hash'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'jquery-rails'
->>>>>>> Stashed changes
