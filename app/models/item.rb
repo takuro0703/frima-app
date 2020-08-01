@@ -4,8 +4,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :span
   belongs_to_active_hash :fee
   belongs_to_active_hash :status
-  has_many :images
+  has_many :images, dependent: :destroy
   has_many :categories
   accepts_nested_attributes_for :images
+  belongs_to :user
 end
 
