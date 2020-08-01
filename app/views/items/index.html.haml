@@ -98,11 +98,14 @@
       .main__pickup__box__head
         = link_to '新規投稿商品',"#"
       .main__pickup__box__lists
-        - @items.zip(@images) do |item,image|
+        - @items.each do |item|
           .main__pickup__box__lists__list
             %a{ href: '#'} 
               .product--img
-                = image_tag image.image
+                - item.images.each do |img|
+    
+                  = image_tag img.image.url
+                  
               .product--body
                 %h3 
                   = item.item_name
@@ -125,7 +128,8 @@
           .main__pickup__box__lists__list
             %a{ href: '#'} 
               .product--img
-                = image_tag url=image.image
+                
+                = image_tag image.image.url
               .product--body
                 %h3 
                   = item.item_name

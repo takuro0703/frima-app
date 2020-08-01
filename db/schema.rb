@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_074816) do
     t.integer "prefecture_id", null: false
     t.integer "span_id", null: false
     t.integer "item_price", null: false
+    t.string "sold_status", null: false
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false

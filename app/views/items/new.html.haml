@@ -41,7 +41,7 @@
           =f.label :item_description, "商品の状態"
           %span 必須
           %br
-          =f.collection_select :status, Status.all, :id, :name, required: true
+          =f.collection_select :status_id, Status.all, :id, :name, required: true
         
 
         .sell_list
@@ -55,21 +55,21 @@
           =f.label :fee, "配送料の負担"
           %span 必須
           %br
-          =f.collection_select :fee, Fee.all, :id, :name, required: true
+          =f.collection_select :fee_id, Fee.all, :id, :name, required: true
 
 
         .sell_list
           =f.label :region, "発送元の地域"
           %span 必須
           %br
-          =f.collection_select :prefecture, Prefecture.all, :id, :name, required: true
+          =f.collection_select :prefecture_id, Prefecture.all, :id, :name, required: true
 
 
         .sell_list
           =f.label :span, "発送までの日数"
           %span 必須
           %br
-          =f.collection_select :span, Span.all, :id, :name, required: true
+          =f.collection_select :span_id, Span.all, :id, :name, required: true
 
 
         .sell_list
