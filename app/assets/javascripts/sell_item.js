@@ -21,7 +21,6 @@ $(function(){
        node.removeAttr('for')
        new_id = id + 1;
        node[0].setAttribute('for', new_id);
-       
      
     let file_in = buildHtml(new_id);
     

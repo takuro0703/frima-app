@@ -104,7 +104,7 @@
               .product--img
                 - item.images.each do |img|
                   -# =binding.pry
-                  = image_tag img.image[0].url
+                  = image_tag img.image.url
                   
               .product--body
                 %h3 
@@ -129,7 +129,7 @@
             %a{ href: '#'} 
               .product--img
                 
-                = image_tag image.image[0].url
+                = image_tag image.image.url
               .product--body
                 %h3 
                   = item.item_name
