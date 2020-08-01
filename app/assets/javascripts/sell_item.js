@@ -9,14 +9,13 @@ $(function(){
 
   function buildHtml(id){
       let html = `
-             <input class="sell_image_content", id="${id}", type="file", name="item[images_attributes][${id - 1}][image_content]">
+             <input class="sell_image_content", id="${id}", type="file", name="item[images_attributes][${id - 1}][image]">
        `
        return html;
   }
 
-  var file_field = document.querySelector('input[type = file]')
   $('.sell_image_label').on('change','.sell_image_content', function(){
-    var file = $('input[type=file]').prop('files')[0];
+    var file = $('input[type=file]:last').prop('files')[0];
     var node = $('.sell_image_label')
     var id = Number(node.attr('for'))
        node.removeAttr('for')

@@ -11,17 +11,20 @@ class ItemsController < ApplicationController
 
   def create
 
-     @item = Item.new(other_item_params[:item][[:item_name], [:ite_description], [:category_id], [:status], [:brand_description], [:span], [:item_price]])
-     @image = @item.images.new(item_params[:item][:images_attributes])
+     @item = Item.new(item_params)
+    binding.pry
+   if @item.save
      redirect_to root_path
-     binding.pry
+   else
+    render :new
+   end
   end
-  private
-  def item_image_params
-    params.require(:item).permit(image_attributes: [:image_content])
-end
 
-  def other_item_params
-    params.require(:item).permit(:item_name, :item_description, :category_id, :status, :brand_description, :fee, :prefecture, :span, :item_price)
+  private
+  def item_params
+   
+    params.require(:item).permit(:item_name, :item_description, :category_id, :status, :brand_description, :fee, :prefecture, :span, :item_price, images_attributes: [:image])
+    binding.pry
+
 end
 end
