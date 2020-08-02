@@ -94,6 +94,36 @@
               %th
                 発送日の目安
               %td
+
+                = @item.delivery_span
+
+
+
+
+    .good
+      .good-botan
+        - if user_signed_in?
+          - if @item.likes.present?
+            - @item.likes.each do |like|
+              - if like.user_id = current_user.id?
+                %i.fas.fa-heart.unlike-btn
+                = link_to @item.likes.count,"/items/#{@item.id}/likes/#{like.id}", method: :delete
+          - else
+            %i.far.fa-heart
+            = link_to @item.likes.count,item_likes_path(@item.id), method: :post
+            %span いいね数:
+      = @item.likes.count  
+
+    .comment
+      .comment__container
+        %form.comment__container__message-form
+          %p.comment__container__message-form__attention
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea.comment__container__message-form__text
+          %button.comment__container__message-form__comment-btn
+            %span
+              コメントする
+
                 = @item.span_id
   .comment
     .comment__container
@@ -104,6 +134,7 @@
         %button.comment__container__message-form__comment-btn
           %span
             コメントする
+
   .links
     .links__around
       = link_to "#", class: "links__around--ahead" do

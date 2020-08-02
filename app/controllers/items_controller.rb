@@ -23,6 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+
+   likes = @item.likes.map{|like| like.user_id == current_user.id}
+
      @category = Category.new
   end
 
@@ -32,6 +35,7 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+
   end
 
   private
