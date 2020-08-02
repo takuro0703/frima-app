@@ -1,0 +1,9 @@
+.all-show
+  - if user_signed_in?
+    = render 'common/header'
+    = render 'show-sign-in'
+    = render 'common/footer'
+  - else
+    = render 'common/header'
+    = render 'show-sign_out'
+    = render 'common/footer'

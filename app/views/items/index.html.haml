@@ -98,11 +98,14 @@
       .main__pickup__box__head
         = link_to '新規投稿商品',"#"
       .main__pickup__box__lists
-        - @items.zip(@images) do |item,image|
+        - @items.each do |item|
           .main__pickup__box__lists__list
-            %a{ href: '#'} 
+            =link_to item_path(item.id) do
               .product--img
-                = image_tag url=image.image
+                - item.images.each do |img|
+                  -# =binding.pry
+                  = image_tag img.image.url
+                  
               .product--body
                 %h3 
                   = item.item_name
@@ -123,9 +126,10 @@
       .main__pickup__box__lists
         - @items.zip(@images) do |item,image|
           .main__pickup__box__lists__list
-            %a{ href: '#'} 
+            =link_to item_path(item.id) do
               .product--img
-                = image_tag url=image.image
+                
+                = image_tag image.image.url
               .product--body
                 %h3 
                   = item.item_name
@@ -170,3 +174,8 @@
   .footer__logo
     = link_to image_tag(src= "logo/logo-white.png", class: "footer__image")
   %p ©︎ FURIMA
+
+= link_to new_item_path, class: "sell_item_path", method: :get do
+  %span 出品
+  =image_tag(src= "icon/icon_camera.png", class: "sell_image")
+    
