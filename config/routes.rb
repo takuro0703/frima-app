@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     post 'address', to: 'users/registrations#create_address'
     get 'confirmation', to: 'users/registrations#new_confirmation'
     post 'confirmation', to: 'users/registrations#create_confirmation'
-    # resources :likes, only: [:create, :destroy]
   end
   root to: 'items#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
