@@ -77,14 +77,6 @@
             %span.indispensable 必須
             %br
             =f.collection_select :span_id, Span.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
-
-        -# .sell_price
-        -#   .price_content
-        -#     %p.price_detail 価格価格（¥300〜9,999,999）
-        -#     =f.label :item_price, "販売価格",  {class: "font-weight-bold"}
-        -#     %span.indispensable 必須
-        -#     %span.sell-yen ¥
-        -#     =f.text_field :item_price, placeholder: "(例 2000", required: true
         .item_price
           .price_content
             .item_price-group
