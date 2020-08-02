@@ -34,12 +34,12 @@
           %ul
             - @item.images.each do |image|
               %li
-                = image_tag image.image, size: "140x140" , class: "show-img"
+                = image_tag image.image.url, size: "140x140" , class: "show-img"
       .detail--price
         = @item.item_price
         円
       .detail--delivery_fee 
-        = @item.delivery_fee
+        = @item.fee_id
       .detail--item_description
         = @item.item_description
       .detail__table
@@ -63,7 +63,7 @@
                 -# = @item.category.parent.name
                 %br
                   アウター
-                -# = @item.category.name
+                = @item.category.name
                   
             %tr
               %th
@@ -79,22 +79,22 @@
               %th
                 商品の状態
               %td
-                = @item.item_condition
+                = @item.status_id
             %tr
               %th
                 配送料の負担
               %td
-                = @item.delivery_fee
+                = @item.fee_id
             %tr
               %th
                 発送元の地域
               %td
-                = @item.region
+                = @item.prefecture_id
             %tr
               %th
                 発送日の目安
               %td
-                = @item.delivery_span
+                = @item.span_id
   .comment
     .comment__container
       %form.comment__container__message-form
