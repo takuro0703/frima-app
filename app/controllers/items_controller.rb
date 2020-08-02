@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+     @category = Category.new
   end
 
   def destroy

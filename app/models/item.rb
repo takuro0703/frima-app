@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :fee
   belongs_to_active_hash :status
   has_many :images, dependent: :destroy
-  has_many :categories
+  belongs_to :category
   accepts_nested_attributes_for :images
 
  
