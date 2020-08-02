@@ -116,16 +116,20 @@
 
     .comment
       .comment__container
-        .message-form
+        .form.comment__container__message-form
+         
         - if current_user
           = form_with(model: [@item, @comment], local: true) do |form|
-            = form.text_area :text, placeholder: "コメントする", rows: "2"
-            = form.submit "コメントする"
+  
+            = form.text_area :text, placeholder: "コメントする", rows: "2", class: "comment__container__message-form__text"
+          
+            = form.submit "コメントする", class: "comment__container__message-form__comment-btn"
             
         - else
           %strong
-            .comment__container__message-form__attention
+            %p.comment__container__message-form__attention
             相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            .button.comment__container__message-form__comment-btn
 
 
     .comments
@@ -137,12 +141,9 @@
               = link_to comment.user.nickname, "/users/#{comment.user_id}"
               ：
             = comment.text
-          -# %textarea.comment__container__message-form__text
-    -#       %button.comment__container__message-form__comment-btn
-    -#         %span
-    -#           コメントする
+   
 
-    -# = @item.span_id
+    = @item.span_id
  
 
   .links
@@ -164,32 +165,7 @@
 
 
 
-    -#       .container
-    -# - if current_user
-    -#   = form_with(model: [@item, @comment], local: true) do |form|
-    -#     = form.text_area :text, placeholder: "コメントする", rows: "2"
-    -#     = form.submit "SEND"
-    -# - else
-    -#   %strong
-    -#     %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-
-
-
-    -# .comments
-    -#   %h4 ＜コメント一覧＞
-    -#   - if @comments
-    -#     - @comments.each do |comment|
-    -#       %p
-    -#         %strong
-    -#           = link_to comment.user.nickname, "/users/#{comment.user_id}"
-    -#           ：
-    -#         = comment.text
-
-
-
-            -#   %strong
-            -# %p.comment__container__message-form__attention
-            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+  
 
 
 
