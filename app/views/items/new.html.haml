@@ -1,10 +1,14 @@
 .seller_wrapper
+  .header
+    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50)
   .seller_content
+    %h2.sell-title
+      商品情報を入力
     .seller_form
       = form_for(@item, url: items_path, html: { class: "seller_form_content"}) do |f|
-        .sell_list
-          = f.label :出品画像
-          %span 必須
+        .sell_image
+          = f.label :出品画像, {class: "font-weight-bold"}
+          %span.indispensable 必須
           %br
           %p 最大10枚までアップロード
           %br
@@ -19,73 +23,114 @@
 
 
         
-        .sell_list
-          =f.label :item_name, "商品名"
-          %span 必須
+        .sell_items
+          =f.label :item_name, "商品名",  {class: "font-weight-bold"}
+          %span.indispensable 必須
           %br
 
-          = f.text_field :item_name, placeholder: "40文字まで", required: true
+          = f.text_field :item_name, placeholder: "商品名(必須 40文字まで)", required: true, class: "item-text"
 
 
-        .sell_list
-          =f.label :item_description, "商品の説明"
-          %span 必須
+        .sell_description
+          =f.label :item_description, "商品の説明",  {class: "font-weight-bold"}
+          %span.indispensable 必須
           %br 
 
-          =f.text_area :item_description, placeholder: "商品の説明", required: true
-          
-        .sell_list
-          =f.label :item_description, "商品のカテゴリー"
-          %span 必須
-          %br
-          = f.collection_select :category_id, Category.all, :id, :name, required: true
-
-
-        .sell_list
-          =f.label :item_description, "商品の状態"
-          %span 必須
-          %br
-          =f.collection_select :status_id, Status.all, :id, :name, required: true
+          =f.text_area :item_description, placeholder: "商品の説明(必須 1,000文字まで)(色、素材、重さ、定価、注意点など)例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。合わせやすいのでおすすめです。", required: true, class: "description"
+        
+        .sell_detail
+          %p.item_show 商品の詳細
+          .sell_category
+            =f.label :item_description, "商品のカテゴリー",  {class: "font-weight-bold"}
+            %span.indispensable 必須
+            %br
+            = f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+          .sell_status
+            =f.label :item_description, "商品の状態",  {class: "font-weight-bold"}
+            %span.indispensable 必須
+            %br
+            =f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
 
         
 
-        .sell_list
-          =f.label :brand_description, "ブランド"
-          %span 任意
+        .sell_brand
+          =f.label :brand_description, "ブランド",  {class: "font-weight-bold"}
+          %span.free 任意
           %br 
-          =f.text_field :brand_description, placeholder: "ブランド"
+          =f.text_field :brand_description, placeholder: "例)シャネル",  class: "brand-text"
 
         
-        .sell_list
-          =f.label :fee, "配送料の負担"
-          %span 必須
-          %br
-          =f.collection_select :fee_id, Fee.all, :id, :name, required: true
+        .sell_delivery
+          %p.delivery_detail 配送について
+          .delivery_routes
+            =f.label :fee, "配送料の負担",  {class: "font-weight-bold"}
+            %span.indispensable 必須
+            %br
+            =f.collection_select :fee_id, Fee.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+          .delivery_routes
+            =f.label :region, "発送元の地域",  {class: "font-weight-bold"}
+            %span.indispensable 必須
+            %br
+            =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+          .delivery_routes
+            =f.label :span, "発送までの日数",  {class: "font-weight-bold"}
+            %span.indispensable 必須
+            %br
+            =f.collection_select :span_id, Span.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
 
+        -# .sell_price
+        -#   .price_content
+        -#     %p.price_detail 価格価格（¥300〜9,999,999）
+        -#     =f.label :item_price, "販売価格",  {class: "font-weight-bold"}
+        -#     %span.indispensable 必須
+        -#     %span.sell-yen ¥
+        -#     =f.text_field :item_price, placeholder: "(例 2000", required: true
+        .item_price
+          .price_content
+            .item_price-group
+              %span
+                価格
+              %span.indispensable
+                必須 
+            %span.sell-yen
+              ¥
+            %input#price_calc.price_form-box{placeholder: "例) 300", type: "number"}/
+             
+          .price_content
+            販売手数料(10%)
+            .right_bar
 
-
-        .sell_list
-          =f.label :region, "発送元の地域"
-          %span 必須
-          %br
-          =f.collection_select :prefecture_id, Prefecture.all, :id, :name, required: true
-
-
-
-        .sell_list
-          =f.label :span, "発送までの日数"
-          %span 必須
-          %br
-          =f.collection_select :span_id, Span.all, :id, :name, required: true
-
-
-
-        .sell_list
-          =f.label :item_price, "販売価格"
-          %span 必須
-          %br 
-          =f.text_field :item_price, placeholder: "(例 2000", required: true
+          .price_content
+            販売利益
+            = f.number_field :item_price, style: "display: none", id: "price"
+             
+            .right_bar_2
+        
+        .caution
+          %p.sentense
+            %a{href: '#', class: "underline"} 禁止されている出品、行為
+            を必ずご確認ください
+          %p.sentense
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            %a{href: '#', class: "underline"} 偽ブランドの販売
+            は犯罪であり処罰される可能性があります。
+          %p.sentense
+            また、出品をもちまして 
+            %a{href: '#', class: "underline"} 加盟店規約
+            に同意したことになります。
         
         
         .sell_submit_area
           =f.submit "出品する", class: "sell_submit"
+          %a{href: '/', class: "return_btn"} もどる
+  .footer
+    %ul.menu
+      %li
+        %a{href: '#'} プライバシーポリシー
+      %li
+        %a{href: '#'} フリマ利用規約
+      %li
+        %a{href: '#'} 特定商取引に関する表記
+    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50)
+    %p.inc 
+      ©︎Furima,Inc.
