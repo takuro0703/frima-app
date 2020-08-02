@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # binding.pry
    likes = @item.likes.map{|like| like.user_id == current_user.id}
    
   end
