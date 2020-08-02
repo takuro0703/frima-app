@@ -34,12 +34,12 @@
           %ul
             - @item.images.each do |image|
               %li
-                = image_tag image.image, size: "140x140" , class: "show-img"
+                = image_tag image.image.url, size: "140x140" , class: "show-img"
       .detail--price
         = @item.item_price
         円
       .detail--delivery_fee 
-        = @item.delivery_fee
+        = @item.fee_id
       .detail--item_description
         = @item.item_description
       .detail__table
@@ -63,7 +63,7 @@
                 -# = @item.category.parent.name
                 %br
                   アウター
-                -# = @item.category.name
+                = @item.category.name
                   
             %tr
               %th
@@ -79,21 +79,22 @@
               %th
                 商品の状態
               %td
-                = @item.item_condition
+                = @item.status_id
             %tr
               %th
                 配送料の負担
               %td
-                = @item.delivery_fee
+                = @item.fee_id
             %tr
               %th
                 発送元の地域
               %td
-                = @item.region
+                = @item.prefecture_id
             %tr
               %th
                 発送日の目安
               %td
+
                 = @item.delivery_span
 
 
@@ -122,6 +123,18 @@
           %button.comment__container__message-form__comment-btn
             %span
               コメントする
+
+                = @item.span_id
+  .comment
+    .comment__container
+      %form.comment__container__message-form
+        %p.comment__container__message-form__attention
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.comment__container__message-form__text
+        %button.comment__container__message-form__comment-btn
+          %span
+            コメントする
+
   .links
     .links__around
       = link_to "#", class: "links__around--ahead" do
@@ -133,7 +146,7 @@
         ベビー・キッズをもっと見る
     - if current_user.id == @item.user_id
       = link_to "商品を編集する", "#", class: "edit-btn"
-      = link_to "商品を削除する", "#", class: "delete-btn"
+      = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
       -# 本来なら上にmethod: :deleteを作成する
     - else
       = link_to "#", class: "buy-btn" do
