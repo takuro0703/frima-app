@@ -95,7 +95,7 @@
                 発送日の目安
               %td
 
-                = @item.delivery_span
+                = @item.span_id
 
 
 
@@ -116,24 +116,35 @@
 
     .comment
       .comment__container
-        %form.comment__container__message-form
-          %p.comment__container__message-form__attention
+        .form.comment__container__message-form
+         
+        - if current_user
+          = form_with(model: [@item, @comment], local: true) do |form|
+  
+            = form.text_area :text, placeholder: "コメントする", rows: "2", class: "comment__container__message-form__text"
+          
+            = form.submit "コメントする", class: "comment__container__message-form__comment-btn"
+            
+        - else
+          %strong
+            %p.comment__container__message-form__attention
             相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %textarea.comment__container__message-form__text
-          %button.comment__container__message-form__comment-btn
-            %span
-              コメントする
+            .button.comment__container__message-form__comment-btn
 
-                = @item.span_id
-  .comment
-    .comment__container
-      %form.comment__container__message-form
-        %p.comment__container__message-form__attention
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea.comment__container__message-form__text
-        %button.comment__container__message-form__comment-btn
-          %span
-            コメントする
+
+    .comments
+      %h4 ＜コメント一覧＞
+      - if @comments
+        - @comments.each do |comment|
+          %p
+            %strong
+              = link_to comment.user.nickname, "/users/#{comment.user_id}"
+              ：
+            = comment.text
+   
+
+    = @item.span_id
+ 
 
   .links
     .links__around
@@ -151,3 +162,12 @@
     - else
       = link_to "#", class: "buy-btn" do
         購入画面に進む
+
+
+
+  
+
+
+
+
+    

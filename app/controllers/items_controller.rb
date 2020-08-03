@@ -22,6 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+   likes = @item.likes.map{|like| like.user_id == current_user.id}
+
+
      @category = Category.new
   end
 
