@@ -39,7 +39,7 @@
         = @item.item_price
         円
       .detail--delivery_fee 
-        = @item.delivery_fee
+        = @item.fee_id
       .detail--item_description
         = @item.item_description
       .detail__table
@@ -79,22 +79,22 @@
               %th
                 商品の状態
               %td
-                = @item.item_condition
+                = Status.data[@item.status_id - 1][:name]
             %tr
               %th
                 配送料の負担
               %td
-                = @item.delivery_fee
+                = Fee.data[@item.fee_id - 1][:name]
             %tr
               %th
                 発送元の地域
               %td
-                = @item.region
+                = Prefecture.data[@item.prefecture_id - 1][:name]
             %tr
               %th
                 発送日の目安
               %td
-                = @item.delivery_span
+                = Span.data[@item.span_id - 1][:name]
   .comment
     .comment__container
       %form.comment__container__message-form

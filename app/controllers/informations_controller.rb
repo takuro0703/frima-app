@@ -7,7 +7,6 @@ class InformationsController < ApplicationController
  end
 
  def update
-  binding.pry
  end
 
 end
