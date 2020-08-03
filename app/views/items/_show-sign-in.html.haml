@@ -79,23 +79,23 @@
               %th
                 商品の状態
               %td
-                = @item.status_id
+                = Status.data[@item.status_id - 1][:name]
+                
             %tr
               %th
                 配送料の負担
               %td
-                = @item.fee_id
+                = Fee.data[@item.fee_id - 1][:name]
             %tr
               %th
                 発送元の地域
               %td
-                = @item.prefecture_id
+                = Prefecture.data[@item.prefecture_id - 1][:name]
             %tr
               %th
                 発送日の目安
               %td
-
-                = @item.span_id
+                = Span.data[@item.span_id - 1][:name]
 
 
 
@@ -143,7 +143,6 @@
             = comment.text
    
 
-    = @item.span_id
  
 
   .links
