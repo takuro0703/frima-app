@@ -98,6 +98,9 @@
 
 
 
+ 
+ 
+
   .good
     .good-botan
       - if user_signed_in?
@@ -111,6 +114,7 @@
           = link_to @item.likes.count,item_likes_path(@item.id), method: :post
           %span いいね数:
     = @item.likes.count  
+
 
   .comment
     .comment__container
