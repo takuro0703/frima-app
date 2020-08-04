@@ -39,7 +39,7 @@
         = @item.item_price
         円
       .detail--delivery_fee 
-        = @item.fee_id
+        = Fee.data[@item.fee_id - 1][:name]
       .detail--item_description
         = @item.item_description
       .detail__table
@@ -56,13 +56,8 @@
                 カテゴリー
               %td
                 %br
-                  ベビーキッズ
-                -# = @item.category.parent.parent.name
                 %br
-                  ベビー服（男の子用）~95cm
-                -# = @item.category.parent.name
                 %br
-                  アウター
                 = @item.category.name
                   
             %tr
@@ -155,9 +150,9 @@
       = link_to "#", class: "links__category--related" do
         ベビー・キッズをもっと見る
     - if current_user.id == @item.user_id
-      = link_to "商品を編集する", "#", class: "edit-btn"
+      = link_to "商品を編集する", edit_item_path(params[:id]), class: "edit-btn"
       = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
-      -# 本来なら上にmethod: :deleteを作成する
+      
     - else
       = link_to "#", class: "buy-btn" do
         購入画面に進む
