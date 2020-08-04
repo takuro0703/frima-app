@@ -2,7 +2,9 @@ class Item < ApplicationRecord
 
   has_many :images
   has_many :items
-
+  scope :al, -> {all}
+ 
+  scope :wher,  -> (search) { where('item_name LIKE ?',  "%#{search}%") }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
@@ -26,9 +28,9 @@ class Item < ApplicationRecord
 
   def self.search(search)
     if search
-      Item.where('item_name LIKE(?)', "%#{search}%")
+      Item.wher
     else
-      Item.all
+      Item.al
     end
   end
 end
