@@ -23,5 +23,13 @@ class Item < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
 
   has_many :comments
+
+  def self.search(search)
+    if search
+      Item.where('item_name LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
 end
 
