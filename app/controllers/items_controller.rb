@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :set_item,only: [:show, :edit, :update, :destroy]
   before_action :show_all_instance, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @items = Item.all
     @images = Image.all
@@ -26,8 +25,9 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
-    likes = @item.likes.map{|like| like.user_id == current_user.id}
 
+
+    likes = @item.likes.map{|like| like.user_id}
 
     @category = Category.new
   end
@@ -53,6 +53,10 @@ class ItemsController < ApplicationController
         render :edit
       end
     end
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
 
   def destroy
