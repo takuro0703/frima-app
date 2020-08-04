@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_many :images
   has_many :items
  
+  # scope :where, -> {where('item_name LIKE(?)'), "%#{search}%"}
   scope :looking,  -> (search) { where('item_name LIKE ?',  "%#{search}%") }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -27,7 +28,7 @@ class Item < ApplicationRecord
 
   def self.search(search)
     if search
-      Item.looking
+      Item.looking(search)
     else
       Item.all
     end
