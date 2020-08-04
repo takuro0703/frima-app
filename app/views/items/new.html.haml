@@ -97,29 +97,29 @@
         
         .caution
           %p.sentense
-            %a{href: '#', class: "underline"} 禁止されている出品、行為
+            =link_to "禁止されている出品、行為","#", class: "underline"
             を必ずご確認ください
           %p.sentense
             またブランド品でシリアルナンバー等がある場合はご記載ください。
-            %a{href: '#', class: "underline"} 偽ブランドの販売
+            =link_to "偽ブランドの販売","#", class: "underline"
             は犯罪であり処罰される可能性があります。
           %p.sentense
             また、出品をもちまして 
-            %a{href: '#', class: "underline"} 加盟店規約
+            =link_to "加盟店規約","#", class: "underline"
             に同意したことになります。
-        
         
         .sell_submit_area
           =f.submit "出品する", class: "sell_submit"
-          %a{href: '/', class: "return_btn"} もどる
+          =link_to 'もどる',"/", class: "return_btn"
+          
   .footer
     %ul.menu
       %li
-        %a{href: '#'} プライバシーポリシー
+        = link_to 'プライバシーポリシー',"#"
       %li
-        %a{href: '#'} フリマ利用規約
+        = link_to 'フリマ利用規約',"#"
       %li
-        %a{href: '#'} 特定商取引に関する表記
+        = link_to '特定商取引に関する表記',"#"
     = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50)
     %p.inc 
       ©︎Furima,Inc.

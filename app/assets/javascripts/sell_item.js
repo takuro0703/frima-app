@@ -47,7 +47,6 @@ $(function(){
           
           $('.sell_image_area').append(html)
         }
-        console.log(fileReader)
         fileReader.readAsDataURL(file)
   })
   
