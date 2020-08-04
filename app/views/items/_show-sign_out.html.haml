@@ -97,18 +97,25 @@
                 = @item.delivery_span
 
 
-  .good-botan
-    - if user_signed_in?
-      - if @item.likes.present?
-        - @item.likes.each do |like|
-          - if like.user_id = current_user.id?
-            %i.fas.fa-heart.unlike-btn
-            = link_to @item.likes.count,"/items/#{@item.id}/likes/#{like.id}", method: :delete
-      - else
-        %i.far.fa-heart
-        = link_to @item.likes.count,item_likes_path(@item.id), method: :post
-        %span いいね数:
-  = @item.likes.count  
+
+ 
+ 
+
+  .good
+    .good-botan
+      - if user_signed_in?
+        - if @item.likes.present?
+          - @item.likes.each do |like|
+            - if like.user_id = current_user.id?
+              %i.fas.fa-heart.unlike-btn
+              = link_to @item.likes.count,"/items/#{@item.id}/likes/#{like.id}", method: :delete
+        - else
+          %i.far.fa-heart
+          = link_to @item.likes.count,item_likes_path(@item.id), method: :post
+          %span いいね数:
+    = @item.likes.count  
+
+
   .comment
     .comment__container
       %form.comment__container__message-form

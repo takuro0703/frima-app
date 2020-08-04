@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item,only: [:show, :destroy]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index
     @items = Item.all
@@ -28,6 +29,10 @@ class ItemsController < ApplicationController
 
 
      @category = Category.new
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
 
   def destroy
