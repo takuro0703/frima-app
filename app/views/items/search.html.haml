@@ -1,0 +1,8 @@
+= form_with url: search_items_path, local: true, method: :post, class: "search-form" do |form|
+  = form.text_field :keyword, placeholder: "キーワードから探す", class: "search-input"
+  = button_tag type: 'submit', class: 'btn btn-primary' do
+    =icon("fas","search")
+
+.contents.row
+  - @items.each do |item|
+    = render partial: "item", locals: { item: item }
