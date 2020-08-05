@@ -3,9 +3,8 @@ class ItemsController < ApplicationController
   before_action :show_all_instance, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
-    @images = Image.all
-
+      @items = Item.where(sold_status: "販売中")
+      @images = Image.all
   end
 
   def new
