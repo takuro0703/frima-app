@@ -33,6 +33,19 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:keyword])
+    sort = params[:sort] || "created_at DESC"
+    # 入力された値をLIKE句により各カラムと一致したものを抽出する。
+    @items = Item.where('name LIKE(?) OR description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").order(sort)
+    # @count = @items.count
+    # 検索結果が"0"だった場合、全ての商品を表示させる
+    if @count == 0
+      @iems = Item.order(sort)
+
+    
+      end
+      
+  
+    
   end
 
   def destroy
