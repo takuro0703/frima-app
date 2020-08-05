@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item,only: [:show, :edit, :update, :destroy]
   before_action :show_all_instance, only: [:show, :edit, :update, :destroy]
+  before_action :set_search, only: [:index, :show]
+
 
   def index
     @items = Item.all
@@ -56,7 +58,33 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword])
+    @items = Item.search(params[:content])
+
+
+    @content = params[:content]
+    # orderメソッドへ代入する値を条件分岐
+    # params[:sort].nil? ? sort  = "created_at DESC" : sort = params[:sort]をリファクタリング
+    # sort = params[:sort] || "created_at DESC"
+    # 入力された値をLIKE句により各カラムと一致したものを抽出する。
+    # @items = Item.where('item_name LIKE(?) OR item_description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").order(sort)
+    @count = @items.length
+    # 検索結果が"0"だった場合、全ての商品を表示させる
+    if @count == 0
+       @items = order(sort)
+
+
+       sort_result = params[:sort] || "created_at DESC"
+
+    if sort_result == "price asc"
+      @items = @items.sort {|a, b| a[:price] <=> b[:price]}
+    elsif sort_result == "price desc"
+      @items = @items.sort {|a, b| b[:price] <=> a[:price]}
+    elsif sort_result == "created_at asc"
+      @items = @items.sort {|a, b| a[:created_at] <=> b[:created_at]}
+    elsif sort_result == "created_at desc"
+      @items = @items.sort {|a, b| b[:created_at] <=> a[:created_at]}
+       end
+    end
   end
 
   def destroy
