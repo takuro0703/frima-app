@@ -56,6 +56,8 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:keyword])
+
+    
   end
 
   def destroy
@@ -71,7 +73,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  private
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+
+
+
   def item_params
     params.require(:item).permit(:item_name, :item_description, :category_id, :status_id, :brand_description, :fee_id, :prefecture_id, :span_id, :item_price, images_attributes: [:image]).merge(user_id: current_user.id, sold_status: "販売中")
   end
