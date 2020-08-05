@@ -7,4 +7,11 @@ class User < ApplicationRecord
   has_one :address
   has_one :confirmation
   has_many :items
+
+
+  has_many :items
+  has_many :likes
+  has_many :like_items, through: :likes, source: :item
+
+  has_many :comments 
 end
