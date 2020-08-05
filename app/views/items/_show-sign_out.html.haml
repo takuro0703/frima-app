@@ -39,6 +39,7 @@
         = @item.item_price
         円
       .detail--delivery_fee 
+
         = Fee.data[@item.fee_id - 1][:name]
       .detail--item_description
         = @item.item_description
@@ -75,7 +76,7 @@
                 商品の状態
               %td
                 = Status.data[@item.status_id - 1][:name]
-                
+
             %tr
               %th
                 配送料の負担
@@ -87,11 +88,10 @@
               %td
                 = Prefecture.data[@item.prefecture_id - 1][:name]
             %tr
-              %th
+              %td
                 発送日の目安
               %td
                 = Span.data[@item.span_id - 1][:name]
-      
 
   .comment
     .comment__container

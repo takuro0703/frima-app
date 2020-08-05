@@ -15,7 +15,7 @@
         %li= link_to 'ブランド', "#",class:"brand"
       %ul.nav--right
         - if user_signed_in?
-          %li= link_to 'ログアウト',destroy_user_session_path, class:"login", method: :delete
+          %li= link_to 'マイページ',informations_path, class:"login", method: :get
         - else
           %li= link_to 'ログイン',new_user_session_path, class:"login"
           %li= link_to '新規会員登録',new_user_registration_path, class:"new"
