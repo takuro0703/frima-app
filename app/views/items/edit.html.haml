@@ -5,23 +5,26 @@
     %h2.sell-title
       商品情報を入力
     .seller_form
-      = form_for(@item, url: items_path, html: { class: "seller_form_content"}) do |f|
+      = form_for(@item, html: { class: "seller_form_content"}) do |f|
         .sell_image
           = f.label :出品画像, {class: "font-weight-bold"}
           %span.indispensable 必須
           %br
           %p 最大10枚までアップロード
           %br
-          
-          .sell_image_area
-
-          =f.fields_for :images, class: "sell_image_form" do |img|
-
-            %label{class: "sell_image_label", for:"1"}
-              =icon("fa", "camera")
-              =img.file_field :image, class: "sell_image_content", id: "1", required: true
-
-
+        #image-box-1{class:"#{@images.last.id}"}
+          - @images.each do |img|
+            .item-image{id:img.id}
+              = image_tag(img.image.url,{width:"100",height:"100"})
+              .item-image__operetion
+                .item-image__operetion--edit__delete__hidden 削除
+          %label.img-label{for: "img-file"}
+            #image-box__container{class:"item-num-#{@images.length}"}
+              #append-js-edit
+                = f.fields_for :images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image, type: 'file', value:"#{image.object.id}",style: "",  id:"img-file", class:'js-file-edit',name: "item[images_attributes][#{@item.images.count}][image]", data:{index:""}
+              %i.fas.fa-camera
         
         .sell_items
           =f.label :item_name, "商品名",  {class: "font-weight-bold"}
