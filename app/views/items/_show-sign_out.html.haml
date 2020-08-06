@@ -6,17 +6,17 @@
       >
     %li.brand-box__lists__list2
       ベビー・キッズ
-      -# = @item.category.parent.parent.name
+     
 
       >
     %li.brand-box__lists__list3
       ベビー服（男の子用）~95cm
-      -# = @item.category.parent.name
+     
 
       >
     %li.brand-box__lists__list4
       アウター
-      -# = @item.category.name
+      
 
       >
     %li.brand-box__lists__list5
@@ -30,7 +30,7 @@
         = @item.item_name
       %ul.detail--main-img
         %li
-          -# = image_tag @product.images[0].name.url, class: "detail--main-img--image"
+          
           %ul
             - @item.images.each do |image|
               %li
