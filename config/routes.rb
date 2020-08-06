@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   end
   root to: 'items#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :items 
-  resources :cards, only: [:new, :create]
+  resources :items do
+    resources :cards, only: [:index] do
+      collection do
+        post 'pay', to: 'cards#pay'
+      end
+    end
+  end
+  resources :cards, only: [:new, :create, :show, :destroy]
 end

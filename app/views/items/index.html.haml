@@ -103,6 +103,9 @@
             %a{ href: '#'} 
               .product--img
                 = image_tag url=image.image
+                  -if item.buyer_id.present?
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner SOLD
               .product--body
                 %h3 
                   = item.item_name
