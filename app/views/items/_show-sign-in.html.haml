@@ -112,7 +112,9 @@
          
         - if current_user
           = form_with(model: [@item, @comment], local: true) do |form|
-  
+            %strong
+              %p.comment__container__message-form__attention
+                相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = form.text_area :text, placeholder: "コメントする", rows: "2", class: "comment__container__message-form__text"
           
             = form.submit "コメントする", class: "comment__container__message-form__comment-btn"
@@ -120,7 +122,7 @@
         - else
           %strong
             %p.comment__container__message-form__attention
-            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             .button.comment__container__message-form__comment-btn
 
 
