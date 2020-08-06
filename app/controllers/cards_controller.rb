@@ -1,12 +1,12 @@
 class CardsController < ApplicationController
   require "payjp"
-  before_action :set_card
+  before_action :set_card 
+  before_action :set_item, only: [:pay, :index]
+
   def new
   end
   
   def index
-    @card = Card.find_by(user_id: current_user.id)
-    @item = Item.find(params[:item_id])
     if @card.blank?
       redirect_to action: "new"
     else
@@ -15,7 +15,6 @@ class CardsController < ApplicationController
   end
 
   def pay
-    @item = Item.find(params[:item_id])
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
     Payjp::Charge.create(
       amount: @item.item_price,
@@ -48,7 +47,6 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
       redirect_to action: 'new'
     else
@@ -61,7 +59,6 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
       redirect_to action: 'new'
     else
@@ -78,6 +75,10 @@ class CardsController < ApplicationController
   end
 
   private
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
