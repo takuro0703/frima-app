@@ -1,0 +1,167 @@
+.brand-box
+  %ul.brand-box__lists
+    %li.brand-box__lists__list1
+      = link_to root_path, class: "brand-box__lists__list1--link1" do
+        FURIMA
+      >
+    %li.brand-box__lists__list2
+      ベビー・キッズ
+      -# = @item.category.parent.parent.name
+
+      >
+    %li.brand-box__lists__list3
+      ベビー服（男の子用）~95cm
+      -# = @item.category.parent.name
+
+      >
+    %li.brand-box__lists__list4
+      アウター
+      -# = @item.category.name
+
+      >
+    %li.brand-box__lists__list5
+      .brand-box__lists__list5--individual-product
+        = @item.item_name
+
+.backcolor-box
+  .details-in-box
+    .detail
+      .detail--item_name
+        = @item.item_name
+      %ul.detail--main-img
+        %li
+          -# = image_tag @product.images[0].name.url, class: "detail--main-img--image"
+          %ul
+            - @item.images.each do |image|
+              %li
+                = image_tag image.image.url, size: "140x140" , class: "show-img"
+      .detail--price
+        = @item.item_price
+        円
+      .detail--delivery_fee 
+        = Fee.data[@item.fee_id - 1][:name]
+      .detail--item_description
+        = @item.item_description
+      .detail__table
+      
+        %table
+          %tbody
+            %tr
+              %th
+                出品者
+              %td
+                = @item.user.nickname
+            %tr
+              %th
+                カテゴリー
+              %td
+                %br
+                %br
+                %br
+                = @item.category.name
+                  
+            %tr
+              %th
+                ブランド
+              %td
+                = @item.brand_description
+            %tr
+              %th
+                商品のサイズ
+              %td
+                
+            %tr
+              %th
+                商品の状態
+              %td
+                = Status.data[@item.status_id - 1][:name]
+                
+            %tr
+              %th
+                配送料の負担
+              %td
+                = Fee.data[@item.fee_id - 1][:name]
+            %tr
+              %th
+                発送元の地域
+              %td
+                = Prefecture.data[@item.prefecture_id - 1][:name]
+            %tr
+              %th
+                発送日の目安
+              %td
+                = Span.data[@item.span_id - 1][:name]
+
+
+
+
+    .good
+      .good-botan
+        - if user_signed_in?
+          - if @item.likes.present?
+            - @item.likes.each do |like|
+              - if like.user_id = current_user.id?
+                %i.fas.fa-heart.unlike-btn
+                = link_to @item.likes.count,"/items/#{@item.id}/likes/#{like.id}", method: :delete
+          - else
+            %i.far.fa-heart
+            = link_to @item.likes.count,item_likes_path(@item.id), method: :post
+            %span いいね数:
+      = @item.likes.count  
+
+    .comment
+      .comment__container
+        .form.comment__container__message-form
+         
+        - if current_user
+          = form_with(model: [@item, @comment], local: true) do |form|
+  
+            = form.text_area :text, placeholder: "コメントする", rows: "2", class: "comment__container__message-form__text"
+          
+            = form.submit "コメントする", class: "comment__container__message-form__comment-btn"
+            
+        - else
+          %strong
+            %p.comment__container__message-form__attention
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            .button.comment__container__message-form__comment-btn
+
+
+    .comments
+      %h4 ＜コメント一覧＞
+      - if @comments
+        - @comments.each do |comment|
+          %p
+            %strong
+              = link_to comment.user.nickname, "/users/#{comment.user_id}"
+              ：
+            = comment.text
+   
+
+ 
+
+  .links
+    .links__around
+      = link_to "#", class: "links__around--ahead" do
+        < 前の商品
+      = link_to "#", class: "links__around--behind" do
+        後ろの商品 >
+    .links__category
+      = link_to "#", class: "links__category--related" do
+        ベビー・キッズをもっと見る
+    - if current_user.id == @item.user_id
+      = link_to "商品を編集する", edit_item_path(params[:id]), class: "edit-btn"
+      = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
+      
+    - else
+      = link_to "#", class: "buy-btn" do
+        購入画面に進む
+
+
+
+  
+
+
+
+
+    

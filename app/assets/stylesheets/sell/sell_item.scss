@@ -1,0 +1,215 @@
+.seller_wrapper{
+  background-color: #f5f5f5;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 500px;
+  text-decoration: none;
+  .header {
+    padding: 5vh 0;
+    text-align: center;
+  }
+  .seller_content{
+    background-color: #FFF;
+    width: 70vw;
+    min-width: 450px;
+    padding: 10vh 15vw;
+    .sell-title {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .seller_form{
+      .seller_form_content{
+        .font-weight-bold {
+          font-weight: bold;
+          min-width: 170px;
+          margin-bottom: 10px;
+        }
+        .indispensable {
+          background: #ea352d;
+          margin-left: 8px;
+          padding: 3px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        .select-box {
+          height: 30px;
+          width: 100%;
+          background-color: #f5f5f5;
+          padding-left: 20px;
+        }
+        .sell_image{
+          padding: 2vh 0;
+          .sell_image_area{
+            width: 600px;
+          }
+          .sell_image_label{
+            position: relative;
+            display: block;
+            // width: 600px;
+            height: 200px;
+            background-color: #eeeeee;
+            .fa-camera{
+              display: block;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+            }
+            .sell_image_content{
+              display: none;
+            }
+          }
+        }
+        .sell_items {
+          padding: 2vh 0;
+          .item-text {
+            width: 100%;
+            padding: 16px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: none;
+          }
+        }
+        .sell_description {
+          padding: 2vh 0;
+          .description {
+            width: 100%;
+            padding: 16px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: none;
+          }
+        }
+        .sell_detail {
+          margin-top: 5vh;
+          .item_show {
+            color: rgb(136, 136, 136);
+          }
+          .sell_category {
+            padding: 2vh 0;
+          }
+          .sell_status {
+            padding: 2vh 0;
+          }
+        }
+        .sell_brand {
+          padding: 2vh 0;
+          .free {
+            background: #bfbfbf;
+            margin-left: 8px;
+            padding: 3px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+          }
+          .brand-text {
+            width: 100%;
+            padding: 16px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: none;
+          }
+        }
+        .sell_delivery {
+          margin-top: 5vh;
+          border-bottom: 1px solid #cccccc;
+          .delivery_detail {
+            color: rgb(136, 136, 136);
+          }
+          .delivery_routes {
+            padding: 2vh 0;
+          }
+        }
+        .item_price {
+          margin-top: 5vh;
+          .price_content {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .item_price-group {
+              display: flex;
+              align-items: center;
+              .price_detail {
+                color: rgb(136, 136, 136);
+              }
+              .indispensable {
+                margin-right: 70px;
+              }
+            }
+            .price_form-box {
+              height: 30px;
+              text-align: right;
+            }
+          }
+        }
+        .caution {
+          padding: 5vh 0;
+          .sentense {
+            .underline {
+              color: #0099e8;
+              text-decoration: none;
+            }
+          }
+        }
+        .sell_submit_area {
+          width: 100%;
+          text-align: center;
+          .sell_submit {
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+            width: 100%;
+            height: 50px;
+            font-size: 14px;
+            margin-bottom: 4vh;
+          }
+          .return_btn {
+            background: #aaa;
+            border: 1px solid #aaa;
+            color: #fff;
+            padding: 15px 35%;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    background-color: #f5f5f5;
+    width: 60vw;
+    padding: 3ch 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 3vh 0;
+      li {
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 12px;
+          margin: 2vw;
+        }
+      }
+    }
+    .inc {
+      color: black;
+      font-size: 12px;
+    }
+  }
+}
+
+

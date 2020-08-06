@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'confirmation', to: 'users/registrations#create_confirmation'
   end
   root to: 'items#index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :items do
     resources :cards, only: [:index] do
@@ -18,5 +19,14 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :cards, only: [:new, :create, :show, :destroy]
+  resources :cards, only: [:new, :create, :show, :destroy] do
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: :create
+    collection do
+      post 'search'
+    end
+  end
+
+  resources :informations
+
 end

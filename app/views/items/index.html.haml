@@ -1,14 +1,13 @@
 .Header
   .Header__inner
     .Header__inner__main
-      .Header__inner__main__icon
+      .Header__inner__main__icon 
         = link_to image_tag(src= "logo/logo.png", class: "top-image")
       .searchBox
-        =form_with url:"#" do |form|
-          =form.text_field :content, placeholder:"キーワードから探す", class:"searchBox__input"
-          =form.label :btn do
-            =icon("fas", "search")
-            =form.submit class:"btn", id:"btn"
+        =form_with url: search_items_path, local: true do |form| 
+          =form.text_field :content, placeholder:"キーワードから探す", class:"searchBox__input" 
+          = button_tag type: 'submit', class: 'btn btn-primary' do
+            =icon("fas","search")
             
     .Header__inner__nav
       %ul.nav--left
@@ -16,7 +15,7 @@
         %li= link_to 'ブランド', "#",class:"brand"
       %ul.nav--right
         - if user_signed_in?
-          %li= link_to 'ログアウト',destroy_user_session_path, class:"login", method: :delete
+          %li= link_to 'マイページ',informations_path, class:"login", method: :get
         - else
           %li= link_to 'ログイン',new_user_session_path, class:"login"
           %li= link_to '新規会員登録',new_user_registration_path, class:"new"
@@ -98,9 +97,9 @@
       .main__pickup__box__head
         = link_to '新規投稿商品',"#"
       .main__pickup__box__lists
-        - @items.zip(@images) do |item,image|
+        - @items.each do |item|
           .main__pickup__box__lists__list
-            %a{ href: '#'} 
+            =link_to item_path(item.id) do
               .product--img
                 = image_tag url=image.image
                   -if item.buyer_id.present?
@@ -126,9 +125,10 @@
       .main__pickup__box__lists
         - @items.zip(@images) do |item,image|
           .main__pickup__box__lists__list
-            %a{ href: '#'} 
+            =link_to item_path(item.id) do
               .product--img
-                = image_tag url=image.image
+                
+                -# = image_tag image.image.url
               .product--body
                 %h3 
                   = item.item_name
@@ -173,3 +173,8 @@
   .footer__logo
     = link_to image_tag(src= "logo/logo-white.png", class: "footer__image")
   %p ©︎ FURIMA
+
+= link_to new_item_path, class: "sell_item_path", method: :get do
+  %span 出品
+  =image_tag(src= "icon/icon_camera.png", class: "sell_image")
+    
