@@ -102,9 +102,7 @@
             =link_to item_path(item.id) do
               .product--img
                 - item.images.each do |img|
-              
-                  = image_tag img.image.url
-                  
+                  = image_tag img.image.url  
               .product--body
                 %h3 
                   = item.item_name
@@ -123,12 +121,12 @@
       .main__pickup__box__head
         = link_to 'アーカイバ',"#"
       .main__pickup__box__lists
-        - @items.zip(@images) do |item,image|
+        - @items.each do |item|
           .main__pickup__box__lists__list
             =link_to item_path(item.id) do
               .product--img
-                
-                = image_tag image.image.url
+                - item.images.each do |img|
+                  = image_tag img.image.url
               .product--body
                 %h3 
                   = item.item_name
