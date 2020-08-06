@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :cards, only: [:new, :create, :show, :destroy] do
+  resources :cards, only: [:new, :create, :show, :destroy]
+  resources :items do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
     collection do
