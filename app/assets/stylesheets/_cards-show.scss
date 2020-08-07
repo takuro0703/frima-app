@@ -1,0 +1,40 @@
+.show{
+  display: flex;
+  justify-content: center;
+  &__frame{
+    margin: 30px 40px;
+    &__title{
+      font-size: 30px;
+      font-weight: bold;
+      margin: 10px;
+    }
+    .credit_card__list{
+      &__title{
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+      &__frame{
+        .credit_card_info{
+          &__numbers{
+            .number{
+              font-size: 20px;
+            }
+            .expiration_date{
+              display: flex;
+            }
+          }
+        }
+        .destroy__function{
+          &__link{
+            .destroy__function__link__btn{
+              background-color: brown;
+              color: #ffffff;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

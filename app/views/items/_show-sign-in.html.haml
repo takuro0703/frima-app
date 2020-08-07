@@ -6,17 +6,15 @@
       >
     %li.brand-box__lists__list2
       ベビー・キッズ
-      -# = @item.category.parent.parent.name
+     
 
       >
     %li.brand-box__lists__list3
       ベビー服（男の子用）~95cm
-      -# = @item.category.parent.name
 
       >
     %li.brand-box__lists__list4
       アウター
-      -# = @item.category.name
 
       >
     %li.brand-box__lists__list5
@@ -30,7 +28,6 @@
         = @item.item_name
       %ul.detail--main-img
         %li
-          -# = image_tag @product.images[0].name.url, class: "detail--main-img--image"
           %ul
             - @item.images.each do |image|
               %li
@@ -115,7 +112,9 @@
          
         - if current_user
           = form_with(model: [@item, @comment], local: true) do |form|
-  
+            %strong
+              %p.comment__container__message-form__attention
+                相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = form.text_area :text, placeholder: "コメントする", rows: "2", class: "comment__container__message-form__text"
           
             = form.submit "コメントする", class: "comment__container__message-form__comment-btn"
@@ -123,7 +122,7 @@
         - else
           %strong
             %p.comment__container__message-form__attention
-            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             .button.comment__container__message-form__comment-btn
 
 
@@ -154,7 +153,7 @@
       = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
       
     - else
-      = link_to "#", class: "buy-btn" do
+      = link_to item_cards_path(params[:id]), class: "buy-btn" do
         購入画面に進む
 
 

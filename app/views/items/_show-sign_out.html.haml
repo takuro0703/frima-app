@@ -6,17 +6,17 @@
       >
     %li.brand-box__lists__list2
       ベビー・キッズ
-      -# = @item.category.parent.parent.name
+     
 
       >
     %li.brand-box__lists__list3
       ベビー服（男の子用）~95cm
-      -# = @item.category.parent.name
+     
 
       >
     %li.brand-box__lists__list4
       アウター
-      -# = @item.category.name
+      
 
       >
     %li.brand-box__lists__list5
@@ -30,7 +30,7 @@
         = @item.item_name
       %ul.detail--main-img
         %li
-          -# = image_tag @product.images[0].name.url, class: "detail--main-img--image"
+          
           %ul
             - @item.images.each do |image|
               %li
@@ -93,15 +93,15 @@
               %td
                 = Span.data[@item.span_id - 1][:name]
 
-  .comment
-    .comment__container
-      %form.comment__container__message-form
-        %p.comment__container__message-form__attention
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea.comment__container__message-form__text
-        %button.comment__container__message-form__comment-btn
-          %span
-            コメントする
+    .comment
+      .comment__container
+        %form.comment__container__message-form
+          %p.comment__container__message-form__attention
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea.comment__container__message-form__text
+          %button.comment__container__message-form__comment-btn
+            %span
+              コメントする
   .links
     .links__around
       = link_to "#", class: "links__around--ahead" do

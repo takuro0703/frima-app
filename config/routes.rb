@@ -13,17 +13,21 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :items do
+    resources :cards, only: [:index] do
+      collection do
+        post 'pay', to: 'cards#pay'
+      end
+    end
+  end
+  resources :cards, only: [:new, :create, :show, :destroy]
+  resources :items do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
     collection do
       post 'search'
     end
-   
   end
 
-
-
-  resources :items
   resources :informations
 
 end
