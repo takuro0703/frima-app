@@ -46,6 +46,16 @@
           padding: 2vh 0;
           .sell_image_area{
             width: 600px;
+            display: flex;
+            .sell_image_content{
+              width: 120px;
+              height: 130px;
+              .sell_image_delete{
+                text-decoration: none;
+                color: black;
+                padding-left: 30px;
+              }
+            }
           }
           .sell_image_label{
             position: relative;

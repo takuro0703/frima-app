@@ -15,8 +15,13 @@ $(function(){
   })
 
   function buildImg(src){
+    let image_length = $('.sell_image_content').length
+    
       let html = `
+             <div class="sell_image_content">
              <img src="${src}", style="width:100px; height: 100px">
+             <a href="#",  class="sell_image_delete", id="${image_length/2}", style="display: block;">削除</a>
+             </div>
             `
       return html
   }
@@ -40,15 +45,21 @@ $(function(){
     
     $('.sell_image_label').append(file_in);
 
-    var fileReader = new FileReader();
-        fileReader.onloadend = function(){
+    var fileReader = new FileReader(new_id);
+        fileReader.onloadend = function(new_id){
           var src = fileReader.result
-          let html = buildImg(src)
+          let html = buildImg(src, new_id)
           
           $('.sell_image_area').append(html)
         }
         fileReader.readAsDataURL(file)
   })
   
-
+  
+  $(document).on('click', '.sell_image_delete', function(e){
+    e.preventDefault();
+      $(this).parent().remove()
+      let id = $(this).attr('id')
+      $(`input#${id}`).remove();
+  })
 })
