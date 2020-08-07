@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', function(){
-  let submit = document.getElementById("payment_card_submit-button");
+  let submit = document.getElementById("payment_card_submit_button");
+  alert(submit)
   Payjp.setPublicKey('pk_test_063c47802746924fb8726735');
 
     submit.addEventListener('click', function(e){
