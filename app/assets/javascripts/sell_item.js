@@ -56,10 +56,12 @@ $(function(){
   })
   
   
+
   $(document).on('click', '.sell_image_delete', function(e){
     e.preventDefault();
       $(this).parent().remove()
       let id = $(this).attr('id')
       $(`input#${id}`).remove();
+      
   })
 })

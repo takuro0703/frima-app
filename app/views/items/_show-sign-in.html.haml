@@ -153,8 +153,11 @@
       = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
       
     - else
-      = link_to item_cards_path(params[:id]), class: "buy-btn" do
-        購入画面に進む
+      -if current_user.cards
+        = link_to "購入画面に進む", item_cards_path(@item.id), class: "buy-btn"
+      -else
+        = link_to "購入画面に進む" , item_cards_path(params[:id]), class: "buy-btn"
+
 
 
 

@@ -68,6 +68,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def get_category_children
+    @category_children = Category.find(params[:data_id]).children
+  end
+
+  def get_category_grandchildren
+    
+    @category_grandchildren = Category.find(params[:data_id]).children
+  end 
+
   private
   def set_item
     @item = Item.find(params[:id])

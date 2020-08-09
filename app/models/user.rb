@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   has_one :address
   has_one :confirmation
-  has_one :card
+  has_many :cards
   has_many :items
 
 
