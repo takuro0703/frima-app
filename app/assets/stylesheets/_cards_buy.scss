@@ -1,0 +1,142 @@
+.buy_wrapper {
+  box-sizing: border-box;
+  .header {
+    width: 100%;
+    min-width: 800px;
+    height: 130px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .buy-area {
+    width: 100vw;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    .buy-content {
+      background-color: #FFF;
+      width: 70vw;
+      min-width: 450px;
+      padding: 10vh 10vw;
+      &__title {
+        text-align: center;
+        border-bottom: 2px solid #f5f5f5;
+        font-weight: bold;
+        font-size: 22px;
+      }
+      &__item {
+        height: 150px;
+        border-bottom: 2px solid #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .buy-item-image {
+          margin-right: 20px;
+          height: 130px;
+          width: 250px;
+          object-fit: contain;
+          margin-top: 20px;
+        }
+        .buy-item-detail {
+          display: flex;
+          flex-direction: column;
+          &__name {
+            font-size: 20px;
+          }
+        }
+      }
+      &__payment {
+        height: 120px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid #f5f5f5;
+        font-weight: bold;
+        &__left {
+          font-size: 20px;
+        }
+        &__right {
+          font-size: 25px;
+        }
+      }
+      &__user-info {
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #f5f5f5;
+        &__inner {
+          .number {
+            margin-top: 10px;
+          }
+          .expiration_date {
+            display: flex;
+            margin-top: 10px;
+            &__title {
+              margin-right: 15px;
+            }
+          }
+        }
+        .update a {
+          text-decoration: none;
+        }
+      }
+      &__user-address {
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #f5f5f5;
+        &__inner {
+          margin-top: 10px;
+          .user-address-text {
+            margin-top: 10px;
+          }
+        }
+        .address-update a {
+          text-decoration: none;
+        }
+      }
+      &__btn {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 50px;
+        .buy-button {
+          width: 100%;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+          line-height: 48px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .footer {
+    background-color: #f5f5f5;
+    padding: 3ch 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 3vh 0;
+      li {
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 12px;
+          margin: 2vw;
+        }
+      }
+    }
+    .inc {
+      color: black;
+      font-size: 12px;
+    }
+  }
+}
