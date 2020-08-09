@@ -2,7 +2,7 @@
   .Header__inner
     .Header__inner__main
       .Header__inner__main__icon
-        = link_to image_tag(src= "logo/logo.png", class: "top-image")
+        = link_to image_tag(src= "logo/logo.png", class: "top-image"), root_path
       .searchBox
         =form_with url:"#" do |form|
           =form.text_field :content, placeholder:"キーワードから探す", class:"searchBox__input"
