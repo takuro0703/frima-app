@@ -47,7 +47,7 @@ $(function(){
       })
       .done(function(children){
      $('.child_select').remove()
-      $('grandchild_select').remove()
+      $('.grandchild_select').remove()
         let innerHtml = '' 
         children.forEach(function(child){
           innerHtml += appendOption(child)
@@ -60,7 +60,7 @@ $(function(){
     }
     else{
       $('.child_select').remove()
-      $('grandchild_select').remove()
+      $('.grandchild_select').remove()
     }
   });
 
@@ -70,7 +70,7 @@ $(function(){
     var id = $(this).attr('id')
     var val = $(this).val()
     var c = $(this)
-    if (val != null){
+    if (val != ""){
       
       $.ajax({
          url: '/items/category/get_category_grandchildren',
@@ -79,7 +79,7 @@ $(function(){
          dataType: 'json'
       })
       .done(function(grandchildren){
-       
+        $('.grandchild_select').remove()
         let innerHtml = '' 
         grandchildren.forEach(function(grandchild){
           innerHtml += appendOption(grandchild)
@@ -91,7 +91,7 @@ $(function(){
       })
     }
     else{
-      ('grandchild_select').remove()
+      $('.grandchild_select').remove()
     }
   })
 })
