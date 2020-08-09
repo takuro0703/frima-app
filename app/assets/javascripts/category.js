@@ -11,7 +11,7 @@ $(function(){
 
   function appendSelect(options){
       let select = `
-          <select class="child_select select-box" name="item[category_id]" id="item_category_id">
+          <select class="child_select select-box" name="item[category_id]" id="item_category_id", required: true>
            <option value>選択してください</option>
            ${options}
           </select>
@@ -23,7 +23,7 @@ $(function(){
 
   function appendGrandchildSelect(options){
     let select = `
-        <select class="grandchild_select select-box" name="item[category_id]" id="item_category_id">
+        <select class="grandchild_select select-box" name="item[category_id]" id="item_category_id", required: true>
          <option value>選択してください</option>
          ${options}
         </select>

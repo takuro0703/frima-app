@@ -87,7 +87,7 @@
                 価格
               %span.indispensable
                 必須 
-            = f.number_field :item_price, placeholder: "例) 300", class: 'price_form-box' do
+            = f.number_field :item_price, placeholder: "例) 300", class: 'price_form-box', required: true do
               %span.sell-yen
                 ¥
           .price_content
