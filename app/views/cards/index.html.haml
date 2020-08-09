@@ -1,6 +1,6 @@
 .buy_wrapper
   .header
-    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50)
+    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50), root_path
   .buy-area
     .buy-content
       %h2.buy-content__title
@@ -22,13 +22,6 @@
       .buy-content__user-info
         .buy-content__user-info__inner
           %h3 支払方法
-          .user-info-text
-            -# - if @default_card_information.blank?
-            -#   %br /
-            -# - else
-            -#   = "**** **** **** " + "#{@default_card_information.last4}"
-            -# %br
-            -# %br
           .number
             = "**** **** **** " + @customer_card.last4
           .expiration_date
@@ -61,6 +54,6 @@
         = link_to 'フリマ利用規約',"#"
       %li
         = link_to '特定商取引に関する表記',"#"
-    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50)
+    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50), root_path
     %p.inc 
       ©︎Furima,Inc.
