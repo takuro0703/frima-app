@@ -5,17 +5,17 @@
         FURIMA
       >
     %li.brand-box__lists__list2
-      ベビー・キッズ
+      = @item.category.parent.parent.name
      
 
       >
     %li.brand-box__lists__list3
-      ベビー服（男の子用）~95cm
+      = @item.category.parent.name
      
 
       >
     %li.brand-box__lists__list4
-      アウター
+      = @item.category.name
       
 
       >
@@ -57,7 +57,9 @@
                 カテゴリー
               %td
                 %br
+                = @item.category.parent.parent.name
                 %br
+                = @item.category.parent.name
                 %br
                 = @item.category.name
                   
@@ -88,7 +90,7 @@
               %td
                 = Prefecture.data[@item.prefecture_id - 1][:name]
             %tr
-              %td
+              %th
                 発送日の目安
               %td
                 = Span.data[@item.span_id - 1][:name]
