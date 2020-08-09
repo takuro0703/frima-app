@@ -48,9 +48,9 @@
             %span.indispensable 必須
             %br
             -# = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.parent.ancestry), :id, :name, {prompt: "#{@item.category.parent.parent.name}"}, {class: "select-box"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.root.ancestry), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.root.ancestry), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box select_category"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box child_select"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box grandchild_select"}
             -# = binding.pry
           .sell_status
             =f.label :item_description, "商品の状態",  {class: "font-weight-bold"}
