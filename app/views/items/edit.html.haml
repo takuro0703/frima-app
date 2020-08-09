@@ -47,7 +47,11 @@
             =f.label :item_description, "商品のカテゴリー",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            = f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            -# = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.parent.ancestry), :id, :name, {prompt: "#{@item.category.parent.parent.name}"}, {class: "select-box"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.root.ancestry), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box"}
+            -# = binding.pry
           .sell_status
             =f.label :item_description, "商品の状態",  {class: "font-weight-bold"}
             %span.indispensable 必須
