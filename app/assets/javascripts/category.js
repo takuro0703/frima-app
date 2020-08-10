@@ -24,7 +24,7 @@ function appendParent(options){
 
   function appendSelect(options){
       let select = `
-          <select class="child_select select-box" name="item[category_id]" id="item_category_id", required: true>
+          <select class="child_select select-box" name="item[category_id]" id="item_category_id", required>
            <option value>選択してください</option>
            ${options}
           </select>
@@ -36,7 +36,7 @@ function appendParent(options){
 
   function appendGrandchildSelect(options){
     let select = `
-        <select class="grandchild_select select-box" name="item[category_id]" id="item_category_id", required: true>
+        <select class="grandchild_select select-box" name="item[category_id]" id="item_category_id", required>
          <option value>選択してください</option>
          ${options}
         </select>
@@ -44,28 +44,7 @@ function appendParent(options){
       $('.sell_category').append(select) 
 }
 
-$(document).on('click', '.parent_category', function(){
- 
-    $.ajax({
-       url: '/items/category/get_category_parent',
-       type: 'GET',
-       dataType: 'json'
-    })
-    .done(function(parent){
-      $('.parent_category').remove()
-      $('.child_select').remove()
-      $('.grandchild_select').remove()
-        let innerHtml = '' 
-        parent.forEach(function(p){
-          innerHtml += appendOption(p)
-        })
-       appendParent(innerHtml)
-    })
-    .fail(function(){
-      alert("カテゴリー取得に失敗しました")
-    })
 
-});
 
 
   $(document).on('change', '.select_category', function(){
