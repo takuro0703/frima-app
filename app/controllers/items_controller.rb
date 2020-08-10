@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if edit_item_params[:images_attributes].nil? || edit_item_params[:category_id].nil?
+    if edit_item_params[:images_attributes].nil? || edit_item_params[:category_id] == nil
       render :edit
     else
       exit_ids = []
@@ -71,6 +71,11 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def get_category_parent
+    @category_parent = Category.where(ancestry: nil)
+    
   end
 
   def get_category_children

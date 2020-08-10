@@ -47,8 +47,7 @@
             =f.label :item_description, "商品のカテゴリー",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            -# = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.parent.ancestry), :id, :name, {prompt: "#{@item.category.parent.parent.name}"}, {class: "select-box"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.root.ancestry), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box select_category", required: true}
+            = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box parent_category select_category", required: true}
             = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box child_select", required: true}
             = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box grandchild_select", required: true}
             -# = binding.pry

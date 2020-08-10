@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       end
     end
     collection do
+      get 'category/get_category_parent', to: 'items#get_category_parent', defaults: {format: 'json'}
       get 'category/get_category_children', to: 'items#get_category_children', defaults: {format: 'json'}
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end

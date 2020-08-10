@@ -1,5 +1,8 @@
 $(function(){
 
+
+
+
   function appendOption(child){
     let option = `
           <option value="${child.id}">${child.name}</option>
@@ -7,6 +10,16 @@ $(function(){
         return option
   }
 
+
+function appendParent(options){
+  let select = `
+      <select class="select-box select_category"  name="item[category_id]" id="item_category_id", required: true>   
+      <option value>選択してください</option>
+      ${options}
+     </select>
+      `
+      $('.sell_category').append(select)
+}
 
 
   function appendSelect(options){
@@ -31,9 +44,31 @@ $(function(){
       $('.sell_category').append(select) 
 }
 
+$(document).on('click', '.parent_category', function(){
+ 
+    $.ajax({
+       url: '/items/category/get_category_parent',
+       type: 'GET',
+       dataType: 'json'
+    })
+    .done(function(parent){
+      $('.parent_category').remove()
+      $('.child_select').remove()
+      $('.grandchild_select').remove()
+        let innerHtml = '' 
+        parent.forEach(function(p){
+          innerHtml += appendOption(p)
+        })
+       appendParent(innerHtml)
+    })
+    .fail(function(){
+      alert("カテゴリー取得に失敗しました")
+    })
+
+});
 
 
-  $('.select_category').on('change', function(){
+  $(document).on('change', '.select_category', function(){
     var id = $(this).attr('id')
     var name = $(this).attr('name')
     var val = $(this).val()
