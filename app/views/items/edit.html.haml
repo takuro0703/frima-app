@@ -48,9 +48,9 @@
             %span.indispensable 必須
             %br
             -# = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.parent.ancestry), :id, :name, {prompt: "#{@item.category.parent.parent.name}"}, {class: "select-box"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.root.ancestry), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box select_category"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box child_select"}
-            = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box grandchild_select"}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.root.ancestry), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box select_category", required: true}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box child_select", required: true}
+            = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box grandchild_select", required: true}
             -# = binding.pry
           .sell_status
             =f.label :item_description, "商品の状態",  {class: "font-weight-bold"}
@@ -73,17 +73,17 @@
             =f.label :fee, "配送料の負担",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :fee_id, Fee.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :fee_id, Fee.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
           .delivery_routes
             =f.label :region, "発送元の地域",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
           .delivery_routes
             =f.label :span, "発送までの日数",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :span_id, Span.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :span_id, Span.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
         .item_price
           .price_content
             .item_price-group

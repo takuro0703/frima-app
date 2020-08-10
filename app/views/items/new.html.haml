@@ -44,7 +44,7 @@
             =f.label :item_description, "商品のカテゴリー",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: "選択して下さい"}, {class: "select_category select-box"}
+            = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: "選択して下さい"}, {class: "select_category select-box", required: true}
 
 
         .sell_detail
@@ -52,7 +52,7 @@
             =f.label :item_description, "商品の状態",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
 
         
 
@@ -69,17 +69,17 @@
             =f.label :fee, "配送料の負担",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :fee_id, Fee.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :fee_id, Fee.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
           .delivery_routes
             =f.label :region, "発送元の地域",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
           .delivery_routes
             =f.label :span, "発送までの日数",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :span_id, Span.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :span_id, Span.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
         .item_price
           .price_content
             .item_price-group

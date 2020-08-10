@@ -13,12 +13,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-   if @item.save
-    redirect_to root_path
+    
+   if item_params[:category_id] == nil
+      render :new 
    else
-    render :new
-   end
+      @item = Item.new(item_params)
+     if @item.save
+      redirect_to root_path
+     else
+      render :new
+     end
+    end
   end
 
   def show
@@ -35,7 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if edit_item_params[:images_attributes].nil?
+    if edit_item_params[:images_attributes].nil? || edit_item_params[:category_id].nil?
       render :edit
     else
       exit_ids = []

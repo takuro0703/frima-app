@@ -69,7 +69,7 @@ $(function(){
   $(document).on('change','.child_select', function(){
     var id = $(this).attr('id')
     var val = $(this).val()
-    var c = $(this)
+    
     if (val != ""){
       
       $.ajax({
