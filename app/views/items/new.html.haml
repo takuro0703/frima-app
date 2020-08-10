@@ -6,6 +6,7 @@
       商品情報を入力
     .seller_form
       = form_for(@item, url: items_path, html: { class: "seller_form_content"}) do |f|
+        
         .sell_image
           = f.label :出品画像, {class: "font-weight-bold"}
           %span.indispensable 必須

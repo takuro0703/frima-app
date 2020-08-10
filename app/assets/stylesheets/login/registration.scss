@@ -4,6 +4,12 @@
   width: 100vw;
   height: 100vh;
   overflow: scroll;
+  .breadcrumbs{
+    a{
+      color: black;
+      text-decoration: none;
+    }
+  }
   .content{
     background-color: white;
     width: 60%;

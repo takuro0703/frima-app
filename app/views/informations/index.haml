@@ -1,6 +1,8 @@
+- breadcrumb :mypage
 .information_wrapper
   .information_content
     %h1.information_title 設定
+    = breadcrumbs pretext: "",separator: " &rsaquo; "
     .information_lists
       .information_list
         =link_to "#", class: "information_link" do

@@ -1,4 +1,6 @@
+- breadcrumb :new_card
 .card_add 
+  = breadcrumbs pretext: "",separator: " &rsaquo; "
   .title クレジットカード情報入力
   = form_tag(cards_path, method: :post, id: "charge-form", class: "details", name: "inputForm") do
     .number-details
