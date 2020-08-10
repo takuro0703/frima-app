@@ -3,6 +3,8 @@
 .main__pickup__box__lists__list
   =link_to item_path(item.id) do
     .product--img
+      - item.images.each do |img|
+        = image_tag img.image.url
       
       
     .product--body
@@ -16,3 +18,5 @@
             %i.fa.fa-star 
             0
         %p (税込)
+
+
