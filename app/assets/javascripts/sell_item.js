@@ -168,13 +168,13 @@ return html
   });
 
 
-     $('.seller_form_content').submit(function(e){
-      let image_area_contents = $('.sell_image_content')
-      if (image_area_contents.length == 0){
-       e.preventDefault();
-       alert('画像をアップロードしてください')
-      }
-     })
+    //  $('.seller_form_content').submit(function(e){
+    //   let image_area_contents = $('.sell_image_content')
+    //   if (image_area_contents.length == 0){
+    //    e.preventDefault();
+    //    alert('画像をアップロードしてください')
+    //   }
+    //  })
    
 })
 
