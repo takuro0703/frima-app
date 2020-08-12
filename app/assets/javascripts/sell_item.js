@@ -155,11 +155,11 @@ return html
     const targetIndex = $(this).prev().prev().data('id')
     
     // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-id="${targetIndex}"].hidden-destroy`)
+    const hiddenCheck = $(`input[data-delete="${targetIndex}"].hidden-destroy`)
     // もしチェックボックスが存在すればチェックを入れる
-    debugger
+   
     if (hiddenCheck) hiddenCheck.prop('checked', true)
-    
+    $(this).parent().remove()
   });
 })
 
