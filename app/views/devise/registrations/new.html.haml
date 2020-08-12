@@ -1,7 +1,9 @@
+- breadcrumb :sign_up
 .wrapper
+  = breadcrumbs pretext: "",separator: " &rsaquo; "
   .content
     %h2.title Sign up
-
+    
     .form
       = form_for(@user, url: user_registration_path) do |f|
         = render "devise/shared/error_messages", resource: @user
