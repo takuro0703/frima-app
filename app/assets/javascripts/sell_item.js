@@ -19,7 +19,7 @@ $(function(){
       let html = `
              <div class="sell_image_content">
              <img src="${src}" , style="width:100px; height: 100px", class="sell_preview_image">
-             <label class="image-edit", for="${id - 1}">
+             <label class="image-edit", for="edit_${id - 1}">
                <span class="sell_image_edit">編集</span>
              </label>
              <span class="new_image_delete">削除</span>
@@ -28,29 +28,64 @@ $(function(){
       return html
   }
 
+
+  function buildEditImg(src, id){
+    let html = `
+    <div class="sell_img_content">
+    <img src="${src}" , style="width:100px; height: 100px", class="sell_preview_image">
+    <span class="sell_new_image_delete">削除</span>
+    </div>
+   `
+return html
+  }
+
   function buildHtml(id){
       let html = `
-             <input class="sell_image_content", id="${id}", type="file", name="item[images_attributes][${id}][image]">
+             <input class="edit_image_content" id="edit_${id}" data-index="${id}" type="file" name="item[images_attributes][${id}][image]">
             `
        return html;
   }
 
 
-//   function labelEditImg(src){
-//     let img = `
-//     <img src="${src}", style="width:100px; height: 100px", class="edit_image">
-//        `
-//        return img
-// }
+  function buildSellHtml(id){
+    let html = `
+             <input class="sell_image_content" id="${id}"  type="file" name="item[images_attributes][${id}][image]">
+            `
+       return html;
+  }
+
+  $(document).on('change','.sell_image_content:last', function(){
+    var node = $('.sell_image_content:last')
+    var file = node.prop('files')[0];
+    var id = Number($('.sell_image_label').attr('for'))
+       new_id = id + 1;
+    
+      //  node[0].setAttribute('for', new_id);
+      $('.sell_image_label').attr('for', `${new_id}`)
+    let file_in = buildSellHtml(new_id);
+    
+    $('.sell_image').append(file_in);
+
+    var fileReader = new FileReader();
+        fileReader.onloadend = function(){
+          var src = fileReader.result
+          
+          let html = buildEditImg(src, new_id)
+          
+          $('.sell_image_area').append(html)
+        }
+        fileReader.readAsDataURL(file)
+  })
 
 
   $(document).on('change','.edit_image_content:last', function(){
     var file = $('input[type=file]:last').prop('files')[0];
-    var node = $('.sell_image_label')
-    var id = Number(node.attr('for'))
-       node.removeAttr('for')
+    var node = $('.edit_image_content:last')
+    var id = Number(node.attr('data-index'))
        new_id = id + 1;
-       node[0].setAttribute('for', new_id);
+    debugger
+      //  node[0].setAttribute('for', new_id);
+      $('.sell_image_label').attr('for', `edit_${new_id}`)
     let file_in = buildHtml(new_id);
     
     $('.sell_image').append(file_in);
@@ -69,9 +104,9 @@ $(function(){
   
 
   $(document).on('click', '.new_image_delete', function(e){
-    e.preventDefault();
       $(this).parent().remove()
       let id = $(this).prev().attr('for')
+     
       $(`input[type="file"]#${id}`).remove();
   })
 
@@ -100,6 +135,7 @@ $(function(){
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-delete="${targetIndex}"].hidden-destroy`)
     // もしチェックボックスが存在すればチェックを入れる
+    debugger
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove()
   });

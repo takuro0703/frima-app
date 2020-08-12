@@ -54,11 +54,16 @@
               height: 130px;
               .image-edit{
                 .sell_image_edit{
+                  display: block;
+                  width: 100px;
                   padding-left: 10px;
                 }
               }
               .sell_image_delete{
                 color: black;
+                padding-left: 10px;
+              }
+              .sell_new_image_delete{
                 padding-left: 10px;
               }
             }
@@ -76,6 +81,12 @@
               top: 50%;
               left: 50%;
             }
+            .sell_image_content{
+              display: none;
+            }
+          }
+          .sell_image_content{
+            display: none;
           }
           .edit_image_content{
             display: none;

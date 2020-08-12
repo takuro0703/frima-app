@@ -22,7 +22,7 @@
                     %span.sell_image_edit 編集
                   %span.sell_image_delete 削除
             
-          %label{class: "sell_image_label", for:"#{@item.images.length}"}
+          %label{class: "sell_image_label", for:"edit_#{@item.images.length - 1}"}
             =icon("fa", "camera")
           
           
@@ -31,7 +31,7 @@
             -if img.object.persisted?
               =img.check_box :_destroy, data:{ delete: img.index }, class: 'hidden-destroy'
 
-          -# %input.sell_image_content{name: "item[images_attributes][#{@item.images.length}][image]", type: "file", id: "#{@item.images.length}", data:{index: "#{@item.images.length}"}}
+          -# %input.edit_image_content{name: "item[images_attributes][#{@item.images.length}][image]", type: "file", id: "#{@item.images.length}", data:{index: "#{@item.images.length}"}}
           
        
        

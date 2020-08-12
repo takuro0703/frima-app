@@ -42,18 +42,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    binding.pry
-    # if edit_item_params[:category_id] == nil
-    #   render :edit
-    # else
-      # exit_ids = []
-      # edit_item_params[:images_attributes].each do |a,b|
-      #   exit_ids << edit_item_params[:images_attributes].dig(:"#{a}",:id).to_i
-      # end
-
-      # ids = Image.where(item_id: params[:id]).map{|image| image.id }
-      # delete__db = ids - exit_ids
-      # Image.where(id:delete__db).destroy_all
+   
       if @item.update(edit_item_params)
         redirect_to  root_path
       else
