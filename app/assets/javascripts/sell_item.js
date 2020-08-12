@@ -18,11 +18,11 @@ $(function(){
     
       let html = `
              <div class="sell_image_content">
-             <img src="${src}" , style="width:100px; height: 100px", class="sell_preview_image">
+             <img src="${src}"  style="width:100px; height: 100px" class="sell_preview_image" data-id="${id - 1}">
              <label class="image-edit", for="edit_${id - 1}">
                <span class="sell_image_edit">編集</span>
              </label>
-             <span class="new_image_delete">削除</span>
+             <span class="sell_image_delete">削除</span>
              </div>
             `
       return html
@@ -118,10 +118,10 @@ return html
 
 
   $(document).on('change', '.edit_image_content', function(e){
-    
+    debugger
     let file =  $(this).prop('files')[0]
     let input_name = $(this).attr('data-index')
-
+   debugger
     let img_content = $(`img[data-id=${input_name}]`)
     var fileReader = new FileReader();
     fileReader.onloadend = function(){
@@ -134,6 +134,7 @@ return html
 
 
 
+  //sellの削除機能
 
   $(document).on('click', '.sell_new_image_delete', function() {
     const targetIndex = $(this).data('index')
@@ -144,6 +145,21 @@ return html
     debugger
     if (hiddenCheck) hiddenCheck.remove()
     $(this).parent().remove()
+  });
+
+
+
+  //editの削除機能
+
+  $(document).on('click', '.sell_image_delete', function() {
+    const targetIndex = $(this).prev().prev().data('id')
+    
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-id="${targetIndex}"].hidden-destroy`)
+    // もしチェックボックスが存在すればチェックを入れる
+    debugger
+    if (hiddenCheck) hiddenCheck.prop('checked', true)
+    
   });
 })
 
