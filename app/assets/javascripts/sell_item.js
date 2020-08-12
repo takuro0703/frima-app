@@ -33,7 +33,7 @@ $(function(){
     let html = `
     <div class="sell_img_content">
     <img src="${src}" , style="width:100px; height: 100px", class="sell_preview_image">
-    <span class="sell_new_image_delete">削除</span>
+    <span class="sell_new_image_delete" data-index="${id - 1}">削除</span>
     </div>
    `
 return html
@@ -49,13 +49,13 @@ return html
 
   function buildSellHtml(id){
     let html = `
-             <input class="sell_image_content" id="${id}"  type="file" name="item[images_attributes][${id}][image]">
+             <input class="sell_input_content" id="${id}"  type="file" name="item[images_attributes][${id}][image]">
             `
        return html;
   }
 
-  $(document).on('change','.sell_image_content:last', function(){
-    var node = $('.sell_image_content:last')
+  $(document).on('change','.sell_input_content:last', function(){
+    var node = $('.sell_input_content:last')
     var file = node.prop('files')[0];
     var id = Number($('.sell_image_label').attr('for'))
        new_id = id + 1;
@@ -78,12 +78,14 @@ return html
   })
 
 
+
   $(document).on('change','.edit_image_content:last', function(){
+    
     var file = $('input[type=file]:last').prop('files')[0];
     var node = $('.edit_image_content:last')
     var id = Number(node.attr('data-index'))
        new_id = id + 1;
-    debugger
+    
       //  node[0].setAttribute('for', new_id);
       $('.sell_image_label').attr('for', `edit_${new_id}`)
     let file_in = buildHtml(new_id);
@@ -103,6 +105,8 @@ return html
   
   
 
+
+
   $(document).on('click', '.new_image_delete', function(e){
       $(this).parent().remove()
       let id = $(this).prev().attr('for')
@@ -117,7 +121,7 @@ return html
     
     let file =  $(this).prop('files')[0]
     let input_name = $(this).attr('data-index')
-    console.log(input_name)
+
     let img_content = $(`img[data-id=${input_name}]`)
     var fileReader = new FileReader();
     fileReader.onloadend = function(){
@@ -129,14 +133,16 @@ return html
   })
 
 
-  $(document).on('click', '.sell_image_delete', function() {
-    const targetIndex = $(this).prev().prev().data('id')
+
+
+  $(document).on('click', '.sell_new_image_delete', function() {
+    const targetIndex = $(this).data('index')
     
     // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-delete="${targetIndex}"].hidden-destroy`)
+    const hiddenCheck = $(`input[type="file"]#${targetIndex}.sell_input_content`)
     // もしチェックボックスが存在すればチェックを入れる
     debugger
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    if (hiddenCheck) hiddenCheck.remove()
     $(this).parent().remove()
   });
 })
