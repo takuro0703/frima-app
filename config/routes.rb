@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -9,7 +11,11 @@ Rails.application.routes.draw do
     get 'confirmation', to: 'users/registrations#new_confirmation'
     post 'confirmation', to: 'users/registrations#create_confirmation'
   end
+
+  
   root to: 'items#index'
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :items do
@@ -24,7 +30,11 @@ Rails.application.routes.draw do
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
+
   resources :cards, only: [:new, :create, :show, :destroy]
+  
+  
   resources :items do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
@@ -32,6 +42,7 @@ Rails.application.routes.draw do
       post 'search'
     end
   end
+
 
   resources :informations
 

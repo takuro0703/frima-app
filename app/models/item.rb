@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
 
-  has_many :images
   has_many :items
  
   # scope :where, -> {where('item_name LIKE(?)'), "%#{search}%"}
@@ -13,7 +12,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   has_many :images, dependent: :destroy
   belongs_to :category
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, allow_destroy: true, update_only: true
 
  
   belongs_to :user

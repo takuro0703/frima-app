@@ -12,20 +12,30 @@
           %br
           %p 最大10枚までアップロード
           %br
-        #image-box-1{class:"#{@images.last.id}"}
-          - @images.each do |img|
-            .item-image{id:img.id}
-              = image_tag(img.image.url,{width:"100",height:"100"})
-              .item-image__operetion
-                .item-image__operetion--edit__delete__hidden 削除
-          %label.img-label{for: "img-file"}
-            #image-box__container{class:"item-num-#{@images.length}"}
-              #append-js-edit
-                = f.fields_for :images do |image|
-                  .js-file_group{"data-index" => "#{image.index}"}
-                    = image.file_field :image, type: 'file', value:"#{image.object.id}",style: "",  id:"img-file", class:'js-file-edit',name: "item[images_attributes][#{@item.images.count}][image]", data:{index:""}
-              %i.fas.fa-camera
-        
+          
+          .sell_image_area
+            -@item.images.each_with_index do |image, index|
+              - if image.persisted?
+                .sell_image_content
+                  =image_tag image.image.url, style: "width:100px; height: 100px", class:"sell_preview_image", data: {id: "#{index}"}
+                  %label{class:"image-edit" ,for: "edit_#{index}"}
+                    %span.sell_image_edit 編集
+                  %span.sell_image_delete 削除
+            
+          %label{class: "sell_image_label", for:"#{@item.images.length}"}
+            =icon("fa", "camera")
+          
+          
+          =f.fields_for :images, class: "sell_image_form" do |img|
+            =img.file_field :image, class: "edit_image_content", id: "edit_#{img.index}", data:{index: "#{img.index}"}
+            -if img.object.persisted?
+              =img.check_box :_destroy, data:{ delete: img.index }, class: 'hidden-destroy'
+
+          -# %input.sell_image_content{name: "item[images_attributes][#{@item.images.length}][image]", type: "file", id: "#{@item.images.length}", data:{index: "#{@item.images.length}"}}
+          
+       
+       
+       
         .sell_items
           =f.label :item_name, "商品名",  {class: "font-weight-bold"}
           %span.indispensable 必須
@@ -50,12 +60,14 @@
             = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {selected: "#{@item.category.root.id}"}, {class: "select-box parent_category select_category", required: true}
             = f.collection_select :category_id, Category.where(ancestry: @item.category.parent.ancestry), :id, :name, {selected: "#{@item.category.parent.id}"}, {class: "select-box child_select", required: true}
             = f.collection_select :category_id, Category.where(ancestry: @item.category.ancestry), :id, :name, {selected: "#{@item.category.id}"}, {class: "select-box grandchild_select", required: true}
-            -# = binding.pry
+
+
+        .sell_detail
           .sell_status
             =f.label :item_description, "商品の状態",  {class: "font-weight-bold"}
             %span.indispensable 必須
             %br
-            =f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box"}
+            =f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択して下さい"}, {class: "select-box", required: true}
 
         
 
@@ -90,7 +102,7 @@
                 価格
               %span.indispensable
                 必須 
-            = f.number_field :item_price, placeholder: "例) 300", class: 'price_form-box' do
+            = f.number_field :item_price, placeholder: "例) 300", class: 'price_form-box', required: true do
               %span.sell-yen
                 ¥
           .price_content
@@ -126,6 +138,6 @@
         = link_to 'フリマ利用規約',"#"
       %li
         = link_to '特定商取引に関する表記',"#"
-    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50), root_path
+    = link_to image_tag(src= "logo/logo.png", class: "top-image", width: 185, height: 50)
     %p.inc 
       ©︎Furima,Inc.

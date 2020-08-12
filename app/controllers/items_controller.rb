@@ -37,25 +37,28 @@ class ItemsController < ApplicationController
   end
 
   def edit
+   
+    @item.images.build
   end
 
   def update
-    if edit_item_params[:images_attributes].nil? || edit_item_params[:category_id] == nil
-      render :edit
-    else
-      exit_ids = []
-      edit_item_params[:images_attributes].each do |a,b|
-        exit_ids << edit_item_params[:images_attributes].dig(:"#{a}",:id).to_i
-      end
-      ids = Image.where(item_id: params[:id]).map{|image| image.id }
-      delete__db = ids - exit_ids
-      Image.where(id:delete__db).destroy_all
-      @item.touch
+    binding.pry
+    # if edit_item_params[:category_id] == nil
+    #   render :edit
+    # else
+      # exit_ids = []
+      # edit_item_params[:images_attributes].each do |a,b|
+      #   exit_ids << edit_item_params[:images_attributes].dig(:"#{a}",:id).to_i
+      # end
+
+      # ids = Image.where(item_id: params[:id]).map{|image| image.id }
+      # delete__db = ids - exit_ids
+      # Image.where(id:delete__db).destroy_all
       if @item.update(edit_item_params)
         redirect_to  root_path
       else
         render :edit
-      end
+      # end
     end
   end
 
@@ -101,11 +104,16 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:item_name, :item_description, :category_id, :status_id, :brand_description, :fee_id, :prefecture_id, :span_id, :item_price, images_attributes: [:image]).merge(user_id: current_user.id, sold_status: "販売中")
+    params.require(:item).permit(:item_name, :item_description, :category_id, :status_id, :brand_description, :fee_id, :prefecture_id, :span_id, :item_price, images_attributes: [:image, :id, :_destroy]).merge(user_id: current_user.id, sold_status: "販売中")
   end
 
   def edit_item_params
-    params.require(:item).permit(:item_name, :item_description, :category_id, :status_id, :brand_description, :fee_id, :prefecture_id, :span_id, :item_price, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id, sold_status: "販売中")
+    params.require(:item).permit(:item_name, :item_description, 
+    :category_id, :status_id, :brand_description, :fee_id, 
+    :prefecture_id, :span_id, :item_price, 
+    images_attributes: [:image, :id, :_destroy])
+    .merge(user_id: current_user.id, sold_status: "販売中")
+  
   end
 
   def show_all_instance

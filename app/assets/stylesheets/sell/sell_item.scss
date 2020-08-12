@@ -47,20 +47,26 @@
           padding: 2vh 0;
           .sell_image_area{
             width: 600px;
+            height: 120px;
             display: flex;
             .sell_image_content{
               width: 120px;
               height: 130px;
+              .image-edit{
+                .sell_image_edit{
+                  padding-left: 10px;
+                }
+              }
               .sell_image_delete{
-                text-decoration: none;
                 color: black;
-                padding-left: 30px;
+                padding-left: 10px;
               }
             }
           }
           .sell_image_label{
             position: relative;
             display: block;
+            margin-top: 15px;
             // width: 600px;
             height: 200px;
             background-color: #eeeeee;
@@ -70,9 +76,12 @@
               top: 50%;
               left: 50%;
             }
-            .sell_image_content{
-              display: none;
-            }
+          }
+          .edit_image_content{
+            display: none;
+          }
+          .hidden-destroy{
+            display: none;
           }
         }
         .sell_items {
