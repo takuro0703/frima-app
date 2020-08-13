@@ -10,13 +10,13 @@
           = f.label :nickname, class: "label"
           %span.essential 必須
           %br
-          = f.text_field :nickname, placeholder: "例)フリマ太郎"
+          = f.text_field :nickname, autofocus: true, placeholder: "例)フリマ太郎"
   
         .field
           = f.label :email, class: "label"
           %span.essential 必須
           %br
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらも可"
+          = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらも可"
 
         .field
           = f.label :password, class: "label"
