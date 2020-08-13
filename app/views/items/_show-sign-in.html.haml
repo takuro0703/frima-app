@@ -147,9 +147,6 @@
         < 前の商品
       = link_to "#", class: "links__around--behind" do
         後ろの商品 >
-    .links__category
-      = link_to "#", class: "links__category--related" do
-        ベビー・キッズをもっと見る
     - if current_user.id == @item.user_id
       = link_to "商品を編集する", edit_item_path(params[:id]), class: "edit-btn"
       = link_to "商品を削除する", item_path(params[:id]), method: :delete, class: "delete-btn"
