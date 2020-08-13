@@ -145,7 +145,7 @@ return html
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[type="file"]#${targetIndex}.sell_input_content`)
     // もしチェックボックスが存在すればチェックを入れる
-    debugger
+   
     if (hiddenCheck) hiddenCheck.remove()
     $(this).parent().remove()
   });
@@ -168,13 +168,13 @@ return html
   });
 
 
-     $('.seller_form_content').submit(function(e){
-      let image_area_contents = $('.sell_image_content')
-      if (image_area_contents.length == 0){
-       e.preventDefault();
-       alert('画像をアップロードしてください')
-      }
-     })
+    //  $('.seller_form_content').submit(function(e){
+    //   let image_area_contents = $('.sell_image_content')
+    //   if (image_area_contents.length == 0){
+    //    e.preventDefault();
+    //    alert('画像をアップロードしてください')
+    //   }
+    //  })
    
 })
 
