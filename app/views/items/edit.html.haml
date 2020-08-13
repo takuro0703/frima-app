@@ -28,7 +28,7 @@
           
           =f.fields_for :images, class: "sell_image_form" do |img|
             =img.file_field :image, class: "edit_image_content", id: "edit_#{img.index}", data:{index: "#{img.index}"}
-            -if img.object.persisted?
+            -if @item.persisted?
               =img.check_box :_destroy, data:{ delete: img.index }, class: 'hidden-destroy'
 
           -# %input.edit_image_content{name: "item[images_attributes][#{@item.images.length}][image]", type: "file", id: "#{@item.images.length}", data:{index: "#{@item.images.length}"}}

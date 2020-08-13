@@ -45,7 +45,8 @@ return html
   function buildHtml(id){
       let html = `
              <input class="edit_image_content" id="edit_${id}" data-index="${id}" type="file" name="item[images_attributes][${id}][image]">
-            `
+             <input data-delete="${id}" class="hidden-destroy" type="checkbox" value="1" id="item_images_${id}__destroy" name="item[images_attributes][${id}][_destroy]">
+             `
        return html;
   }
 
@@ -121,10 +122,10 @@ return html
 
 
   $(document).on('change', '.edit_image_content', function(e){
-    debugger
+    
     let file =  $(this).prop('files')[0]
     let input_name = $(this).attr('data-index')
-   debugger
+   
     let img_content = $(`img[data-id=${input_name}]`)
     var fileReader = new FileReader();
     fileReader.onloadend = function(){
